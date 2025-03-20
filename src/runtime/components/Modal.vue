@@ -158,7 +158,7 @@ const ui = computed(() => modal({
                 </DialogDescription>
               </div>
 
-              <DialogClose as-child>
+              <DialogClose v-if="close || !!slots.close" as-child>
                 <slot name="close" :ui="ui">
                   <UButton
                     v-if="close"
