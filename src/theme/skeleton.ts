@@ -1,3 +1,3 @@
 export default {
-  base: 'animate-pulse rounded-md bg-elevated aria-busy:cursor-progress'
+  base: 'animate-pulse rounded-md bg-elevated'
 }
