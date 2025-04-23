@@ -126,6 +126,8 @@ export interface SelectSlots<
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
   'item-trailing': SlotProps<T>
+  'content-top': (props?: {}) => any
+  'content-bottom': (props?: {}) => any
 }
 </script>
 
@@ -264,6 +266,8 @@ function isSelectItem(item: SelectItem): item is SelectItemBase {
 
     <SelectPortal v-bind="portalProps">
       <SelectContent :class="ui.content({ class: props.ui?.content })" v-bind="contentProps">
+        <slot name="content-top" />
+
         <SelectViewport :class="ui.viewport({ class: props.ui?.viewport })">
           <SelectGroup v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group({ class: props.ui?.group })">
             <template v-for="(item, index) in group" :key="`group-${groupIndex}-${index}`">
@@ -312,6 +316,8 @@ function isSelectItem(item: SelectItem): item is SelectItemBase {
             </template>
           </SelectGroup>
         </SelectViewport>
+
+        <slot name="content-bottom" />
 
         <SelectArrow v-if="!!arrow" v-bind="arrowProps" :class="ui.arrow({ class: props.ui?.arrow })" />
       </SelectContent>
