@@ -169,6 +169,8 @@ ignore:
   - items
 external:
   - items
+externalTypes:
+  - RadioGroupItem[]
 props:
   color: 'primary'
   variant: 'table'
