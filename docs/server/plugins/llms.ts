@@ -1,6 +1,8 @@
 import json5 from 'json5'
 import { camelCase, kebabCase } from 'scule'
 import { visit } from '@nuxt/content/runtime'
+import type { H3Event } from 'h3'
+import type { PageCollectionItemBase } from '@nuxt/content'
 import * as theme from '../../.nuxt/ui'
 import * as themePro from '../../.nuxt/ui-pro'
 import meta from '#nuxt-component-meta'
@@ -278,7 +280,7 @@ const generateComponentCode = ({
 }
 
 export default defineNitroPlugin((nitroApp) => {
-  nitroApp.hooks.hook('content:llms:generate:document' as any, async (doc: Document) => {
+  nitroApp.hooks.hook('content:llms:generate:document', async (_: H3Event, doc: PageCollectionItemBase) => {
     const componentName = camelCase(doc.title)
 
     visitAndReplace(doc, 'component-theme', (node) => {
