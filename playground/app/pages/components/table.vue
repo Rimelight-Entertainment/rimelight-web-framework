@@ -143,6 +143,8 @@ const data = ref<Payment[]>([{
   amount: 567
 }])
 
+const currentID = ref(4601)
+
 const columns: TableColumn<Payment>[] = [{
   id: 'select',
   header: ({ table }) => h(UCheckbox, {
@@ -277,8 +279,19 @@ const pagination = ref({
   pageSize: 10
 })
 
+function addElement() {
+  data.value.unshift({
+    id: currentID.value.toString(),
+    date: new Date().toISOString(),
+    status: 'paid',
+    email: 'new@example.com',
+    amount: Math.random() * 1000
+  })
+  currentID.value++
+}
+
 function randomize() {
-  data.value = [...data.value].sort(() => Math.random() - 0.5)
+  data.value = data.value.sort(() => Math.random() - 0.5)
 }
 
 function onSelect(row: TableRow<Payment>) {
@@ -303,6 +316,7 @@ onMounted(() => {
       />
 
       <UButton color="neutral" label="Randomize" @click="randomize" />
+      <UButton color="neutral" label="Add element" @click="addElement" />
 
       <UDropdownMenu
         :items="table?.tableApi?.getAllColumns().filter(column => column.getCanHide()).map(column => ({
