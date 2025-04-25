@@ -115,6 +115,7 @@ export function getTemplates(options: ModuleOptions, uiConfig: Record<string, an
   --border-color-muted: var(--ui-border-muted);
   --border-color-accented: var(--ui-border-accented);
   --border-color-inverted: var(--ui-border-inverted);
+  --border-color-bg: var(--ui-bg);
   --ring-color-default: var(--ui-border);
   --ring-color-muted: var(--ui-border-muted);
   --ring-color-accented: var(--ui-border-accented);
@@ -124,6 +125,7 @@ export function getTemplates(options: ModuleOptions, uiConfig: Record<string, an
   --divide-color-muted: var(--ui-border-muted);
   --divide-color-accented: var(--ui-border-accented);
   --divide-color-inverted: var(--ui-border-inverted);
+  --divide-color-bg: var(--ui-bg);
   --outline-color-default: var(--ui-border);
   --outline-color-inverted: var(--ui-border-inverted);
   --stroke-default: var(--ui-border);
