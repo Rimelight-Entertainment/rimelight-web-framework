@@ -20,6 +20,11 @@
       "@tailwindcss/vite"
     ]
   }, {
+    "groupName": "reka-ui",
+    "matchPackageNames": [
+      "reka-ui"
+    ]
+  }, {
     "matchDepTypes": ["peerDependencies"],
     "enabled": false
   }, {
