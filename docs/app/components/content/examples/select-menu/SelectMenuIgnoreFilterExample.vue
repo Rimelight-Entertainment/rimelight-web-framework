@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { refDebounced } from '@vueuse/core'
 import type { AvatarProps } from '@nuxt/ui'
 
 const searchTerm = ref('')

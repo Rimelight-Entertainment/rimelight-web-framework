@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { refDebounced } from '@vueuse/core'
+
 const searchTerm = ref('')
 const searchTermDebounced = refDebounced(searchTerm, 200)
 
