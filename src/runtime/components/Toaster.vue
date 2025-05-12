@@ -128,9 +128,7 @@ function getOffset(index: number) {
         '--translate': expanded ? 'calc(var(--offset) * var(--translate-factor))' : 'calc(var(--before) * var(--gap))',
         '--transform': 'translateY(var(--translate)) scale(var(--scale))'
       }"
-      :class="[ui.base(), {
-        'cursor-pointer': !!toast.onClick
-      }]"
+      :class="ui.base({ class: [props.ui?.base, toast.onClick ? 'cursor-pointer' : undefined] })"
       @update:open="onUpdateOpen($event, toast.id)"
       @click="toast.onClick && toast.onClick(toast)"
     />
