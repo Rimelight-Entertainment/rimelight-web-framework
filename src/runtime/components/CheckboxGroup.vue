@@ -14,6 +14,8 @@ export type CheckboxGroupItem = {
   description?: string
   disabled?: boolean
   value?: string
+  class?: any
+  ui?: Pick<CheckboxGroup['slots'], 'item'> & Omit<Required<CheckboxProps>['ui'], 'root'>
   [key: string]: any
 } | CheckboxGroupValue
 
@@ -177,8 +179,8 @@ function onUpdate(value: any) {
         :size="size"
         :name="name"
         :disabled="item.disabled || disabled"
-        :ui="props.ui ? omit(props.ui, ['root']) : undefined"
-        :class="ui.item({ class: props.ui?.item })"
+        :ui="{ ...(props.ui ? omit(props.ui, ['root']) : undefined), ...(item.ui || {}) }"
+        :class="ui.item({ class: [props.ui?.item, item.ui?.item, item.class] })"
       >
         <template v-for="(_, name) in proxySlots" #[name]>
           <slot :name="(name as keyof CheckboxGroupSlots<T>)" :item="item" />
