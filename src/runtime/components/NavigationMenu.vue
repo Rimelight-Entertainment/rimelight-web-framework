@@ -288,8 +288,8 @@ function getAccordionDefaultValue(list: NavigationMenuItem[]) {
           :disabled="item.disabled"
           @select="item.onSelect"
         >
-          <UTooltip v-if="!!item.tooltip" :content="{ side: 'right' }" v-bind="item.tooltip">
-            <ULinkBase v-bind="slotProps" :class="ui.link({ class: [props.ui?.link, item.ui?.link, item.class], active, disabled: !!item.disabled, level: orientation === 'horizontal' || level > 0 })">
+          <UTooltip v-if="!!item.tooltip && orientation === 'vertical' && collapsed" :content="{ side: 'right' }" v-bind="item.tooltip">
+            <ULinkBase v-bind="slotProps" :class="ui.link({ class: [props.ui?.link, item.ui?.link, item.class], active, disabled: !!item.disabled, level: level > 0 })">
               <ReuseLinkTemplate :item="item" :active="active" :index="index" />
             </ULinkBase>
           </UTooltip>
