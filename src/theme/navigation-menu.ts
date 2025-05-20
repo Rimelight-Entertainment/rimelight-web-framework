@@ -188,6 +188,7 @@ export default (options: Required<ModuleOptions>) => ({
     variant: 'pill',
     active: true,
     highlight: true,
+    disabled: false,
     class: {
       link: ['hover:before:bg-elevated/50', options.theme.transitions && 'before:transition-colors']
     }
