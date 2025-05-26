@@ -23,7 +23,7 @@ Use the `items` prop as an array of objects with the following properties:
 - `badge?: string | number | BadgeProps`{lang="ts-type"}
 - `tooltip?: TooltipProps`{lang="ts-type"}
 - `trailingIcon?: string`{lang="ts-type"}
-- `type?: 'label' | 'link'`{lang="ts-type"}
+- `type?: 'label' | 'trigger' | 'link'`{lang="ts-type"}
 - `defaultOpen?: boolean`{lang="ts-type"}
 - `open?: boolean`{lang="ts-type"}
 - `value?: string`{lang="ts-type"}
