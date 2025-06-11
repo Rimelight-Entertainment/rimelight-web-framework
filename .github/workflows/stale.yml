@@ -14,7 +14,7 @@ jobs:
       issues: write
 
     steps:
-      - uses: actions/stale@52ba5a3ff1187e527a8a9b699ffb1c6f1b4c8bbd
+      - uses: actions/stale@4c023f01d613e60293d8004f251a18bfb9bbd71d
         with:
           days-before-pr-stale: -1
           days-before-stale: 60
@@ -35,4 +35,3 @@ jobs:
             — Nuxt UI Team
           exempt-issue-labels: 'feature,announcement'
           operations-per-run: 300
-          cache-prefix: _state_stale
