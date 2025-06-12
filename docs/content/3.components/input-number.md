@@ -1,6 +1,6 @@
 ---
 title: InputNumber
-description: Input numerical values with a customizable range.
+description: An input for numerical values with a customizable range.
 category: form
 links:
   - label: NumberField
