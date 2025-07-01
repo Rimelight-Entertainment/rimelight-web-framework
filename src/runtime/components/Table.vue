@@ -165,6 +165,7 @@ export interface TableProps<T extends TableData = TableData> extends TableOption
    */
   facetedOptions?: FacetedOptions<T>
   onSelect?: (row: TableRow<T>, e?: Event) => void
+  onHover?: (e: Event, row: TableRow<T> | null) => void
   onContextmenu?: ((e: Event, row: TableRow<T>) => void) | Array<((e: Event, row: TableRow<T>) => void)>
   class?: any
   ui?: Table['slots']
@@ -331,6 +332,14 @@ function onRowSelect(e: Event, row: TableRow<T>) {
   props.onSelect(row, e)
 }
 
+function onRowHover(e: Event, row: TableRow<T> | null) {
+  if (!props.onHover) {
+    return
+  }
+
+  props.onHover(e, row)
+}
+
 function onRowContextmenu(e: Event, row: TableRow<T>) {
   if (!props.onContextmenu) {
     return
@@ -396,7 +405,7 @@ defineExpose({
           <template v-for="row in tableApi.getRowModel().rows" :key="row.id">
             <tr
               :data-selected="row.getIsSelected()"
-              :data-selectable="!!props.onSelect || !!props.onContextmenu"
+              :data-selectable="!!props.onSelect || !!props.onHover || !!props.onContextmenu"
               :data-expanded="row.getIsExpanded()"
               :role="props.onSelect ? 'button' : undefined"
               :tabindex="props.onSelect ? 0 : undefined"
@@ -407,6 +416,8 @@ defineExpose({
                 ]
               })"
               @click="onRowSelect($event, row)"
+              @pointerenter="onRowHover($event, row)"
+              @pointerleave="onRowHover($event, null)"
               @contextmenu="onRowContextmenu($event, row)"
             >
               <td

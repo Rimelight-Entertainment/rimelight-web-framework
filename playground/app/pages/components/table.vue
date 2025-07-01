@@ -3,7 +3,7 @@ import { h, resolveComponent } from 'vue'
 import { upperFirst } from 'scule'
 import type { TableColumn, TableRow } from '@nuxt/ui'
 import { getPaginationRowModel } from '@tanstack/vue-table'
-import { useClipboard } from '@vueuse/core'
+import { useClipboard, refDebounced } from '@vueuse/core'
 
 const UButton = resolveComponent('UButton')
 const UCheckbox = resolveComponent('UCheckbox')
@@ -311,6 +311,30 @@ function onContextmenu(e: Event, row: TableRow<Payment>) {
   contextmenuRow.value = row
 }
 
+const popoverOpen = ref(false)
+const popoverOpenDebounced = refDebounced(popoverOpen, 1)
+const popoverAnchor = ref({ x: 0, y: 0 })
+const popoverRow = ref<TableRow<Payment> | null>(null)
+
+const reference = computed(() => ({
+  getBoundingClientRect: () =>
+    ({
+      width: 0,
+      height: 0,
+      left: popoverAnchor.value.x,
+      right: popoverAnchor.value.x,
+      top: popoverAnchor.value.y,
+      bottom: popoverAnchor.value.y,
+      ...popoverAnchor.value
+    } as DOMRect)
+}))
+
+function onHover(_e: Event, row: TableRow<Payment> | null) {
+  popoverRow.value = row
+
+  popoverOpen.value = !!row
+}
+
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
@@ -374,12 +398,25 @@ onMounted(() => {
         class="border border-accented rounded-sm"
         @select="onSelect"
         @contextmenu="onContextmenu"
+        @pointermove="(ev: PointerEvent) => {
+          popoverAnchor.x = ev.clientX
+          popoverAnchor.y = ev.clientY
+        }"
+        @hover="onHover"
       >
         <template #expanded="{ row }">
           <pre>{{ row.original }}</pre>
         </template>
       </UTable>
     </UContextMenu>
+
+    <UPopover :content="{ side: 'top', sideOffset: 16, updatePositionStrategy: 'always' }" :open="popoverOpenDebounced" :reference="reference">
+      <template #content>
+        <div class="p-4">
+          {{ popoverRow?.original?.id }}
+        </div>
+      </template>
+    </UPopover>
 
     <div class="flex items-center justify-between gap-3">
       <div class="text-sm text-muted">
