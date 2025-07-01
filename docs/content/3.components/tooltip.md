@@ -196,10 +196,6 @@ name: 'tooltip-cursor-example'
 ---
 ::
 
-::note
-This example is based on Reka UI's [Tooltip Cursor](https://reka-ui.com/examples/tooltip-cursor) example.
-::
-
 ## API
 
 ### Props
