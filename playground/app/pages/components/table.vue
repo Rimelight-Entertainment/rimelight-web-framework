@@ -147,6 +147,35 @@ const data = ref<Payment[]>([{
 
 const currentID = ref(4601)
 
+function getRowItems(row: TableRow<Payment>) {
+  return [{
+    type: 'label' as const,
+    label: 'Actions'
+  }, {
+    label: 'Copy payment ID',
+    onSelect() {
+      copy(row.original.id)
+
+      toast.add({
+        title: 'Payment ID copied to clipboard!',
+        color: 'success',
+        icon: 'i-lucide-circle-check'
+      })
+    }
+  }, {
+    label: row.getIsExpanded() ? 'Collapse' : 'Expand',
+    onSelect() {
+      row.toggleExpanded()
+    }
+  }, {
+    type: 'separator' as const
+  }, {
+    label: 'View customer'
+  }, {
+    label: 'View payment details'
+  }]
+}
+
 const columns: TableColumn<Payment>[] = [{
   id: 'select',
   header: ({ table }) => h(UCheckbox, {
@@ -227,38 +256,11 @@ const columns: TableColumn<Payment>[] = [{
   id: 'actions',
   enableHiding: false,
   cell: ({ row }) => {
-    const items = [{
-      type: 'label',
-      label: 'Actions'
-    }, {
-      label: 'Copy payment ID',
-      onSelect() {
-        copy(row.original.id)
-
-        toast.add({
-          title: 'Payment ID copied to clipboard!',
-          color: 'success',
-          icon: 'i-lucide-circle-check'
-        })
-      }
-    }, {
-      label: row.getIsExpanded() ? 'Collapse' : 'Expand',
-      onSelect() {
-        row.toggleExpanded()
-      }
-    }, {
-      type: 'separator'
-    }, {
-      label: 'View customer'
-    }, {
-      label: 'View payment details'
-    }]
-
     return h('div', { class: 'text-right' }, h(UDropdownMenu, {
       'content': {
         align: 'end'
       },
-      items,
+      'items': getRowItems(row),
       'aria-label': 'Actions dropdown'
     }, () => h(UButton, {
       'icon': 'i-lucide-ellipsis-vertical',
@@ -296,8 +298,17 @@ function randomize() {
   data.value = data.value.sort(() => Math.random() - 0.5)
 }
 
+const rowSelection = ref<Record<string, boolean>>({})
+
 function onSelect(row: TableRow<Payment>) {
-  console.log(row)
+  row.toggleSelected(!row.getIsSelected())
+}
+
+const contextmenuRow = ref<TableRow<Payment> | null>(null)
+const contextmenuItems = computed(() => contextmenuRow.value ? getRowItems(contextmenuRow.value) : [])
+
+function onContextmenu(e: Event, row: TableRow<Payment>) {
+  contextmenuRow.value = row
 }
 
 onMounted(() => {
@@ -344,27 +355,31 @@ onMounted(() => {
       </UDropdownMenu>
     </div>
 
-    <UTable
-      ref="table"
-      :data="data"
-      :columns="columns"
-      :column-pinning="columnPinning"
-      :loading="loading"
-      :pagination="pagination"
-      :pagination-options="{
-        getPaginationRowModel: getPaginationRowModel()
-      }"
-      :ui="{
-        tr: 'divide-x divide-default'
-      }"
-      sticky
-      class="border border-accented rounded-sm"
-      @select="onSelect"
-    >
-      <template #expanded="{ row }">
-        <pre>{{ row.original }}</pre>
-      </template>
-    </UTable>
+    <UContextMenu :items="contextmenuItems">
+      <UTable
+        ref="table"
+        :data="data"
+        :columns="columns"
+        :column-pinning="columnPinning"
+        :row-selection="rowSelection"
+        :loading="loading"
+        :pagination="pagination"
+        :pagination-options="{
+          getPaginationRowModel: getPaginationRowModel()
+        }"
+        :ui="{
+          tr: 'divide-x divide-default'
+        }"
+        sticky
+        class="border border-accented rounded-sm"
+        @select="onSelect"
+        @contextmenu="onContextmenu"
+      >
+        <template #expanded="{ row }">
+          <pre>{{ row.original }}</pre>
+        </template>
+      </UTable>
+    </UContextMenu>
 
     <div class="flex items-center justify-between gap-3">
       <div class="text-sm text-muted">

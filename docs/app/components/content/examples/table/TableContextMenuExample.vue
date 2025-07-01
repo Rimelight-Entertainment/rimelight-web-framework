@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
-import type { TableColumn, TableRow } from '@nuxt/ui'
+import type { ContextMenuItem, TableColumn, TableRow } from '@nuxt/ui'
+import { useClipboard } from '@vueuse/core'
 
 const UBadge = resolveComponent('UBadge')
 const UCheckbox = resolveComponent('UCheckbox')
+
+const toast = useToast()
+const { copy } = useClipboard()
 
 type Payment = {
   id: string
@@ -58,6 +62,10 @@ const columns: TableColumn<Payment>[] = [{
     'aria-label': 'Select row'
   })
 }, {
+  accessorKey: 'id',
+  header: '#',
+  cell: ({ row }) => `#${row.getValue('id')}`
+}, {
   accessorKey: 'date',
   header: 'Date',
   cell: ({ row }) => {
@@ -99,33 +107,53 @@ const columns: TableColumn<Payment>[] = [{
   }
 }]
 
-const table = useTemplateRef('table')
+const items = ref<ContextMenuItem[]>([])
 
-const rowSelection = ref<Record<string, boolean>>({ })
+function getRowItems(row: TableRow<Payment>) {
+  return [{
+    type: 'label' as const,
+    label: 'Actions'
+  }, {
+    label: 'Copy payment ID',
+    onSelect() {
+      copy(row.original.id)
 
-function onSelect(row: TableRow<Payment>, e?: Event) {
-  /* If you decide to also select the column you can do this  */
-  row.toggleSelected(!row.getIsSelected())
+      toast.add({
+        title: 'Payment ID copied to clipboard!',
+        color: 'success',
+        icon: 'i-lucide-circle-check'
+      })
+    }
+  }, {
+    label: row.getIsExpanded() ? 'Collapse' : 'Expand',
+    onSelect() {
+      row.toggleExpanded()
+    }
+  }, {
+    type: 'separator' as const
+  }, {
+    label: 'View customer'
+  }, {
+    label: 'View payment details'
+  }]
+}
 
-  console.log(e)
+function onContextmenu(_e: Event, row: TableRow<Payment>) {
+  items.value = getRowItems(row)
 }
 </script>
 
 <template>
-  <div class="flex w-full flex-1 gap-1">
-    <div class="flex-1">
-      <UTable
-        ref="table"
-        v-model:row-selection="rowSelection"
-        :data="data"
-        :columns="columns"
-        @select="onSelect"
-      />
-
-      <div class="px-4 py-3.5 border-t border-accented text-sm text-muted">
-        {{ table?.tableApi?.getFilteredSelectedRowModel().rows.length || 0 }} of
-        {{ table?.tableApi?.getFilteredRowModel().rows.length || 0 }} row(s) selected.
-      </div>
-    </div>
-  </div>
+  <UContextMenu :items="items">
+    <UTable
+      :data="data"
+      :columns="columns"
+      class="flex-1"
+      @contextmenu="onContextmenu"
+    >
+      <template #expanded="{ row }">
+        <pre>{{ row.original }}</pre>
+      </template>
+    </UTable>
+  </UContextMenu>
 </template>

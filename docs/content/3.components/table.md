@@ -324,6 +324,22 @@ class: '!p-0'
 ---
 ::
 
+### With context menu :badge{label="Soon" class="align-text-top"}
+
+You can wrap the `UTable` component in a [ContextMenu](/components/context-menu) component to make rows right clickable. You also need to add a `@contextmenu` listener to the `UTable` component to determine wich row is being right clicked. The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
+
+::component-example
+---
+prettier: true
+collapse: true
+name: 'table-context-menu-example'
+highlights:
+  - 130
+  - 170
+class: '!p-0'
+---
+::
+
 ### With column sorting
 
 You can update a column `header` to render a [Button](/components/button) component inside the `header` to toggle the sorting state using the TanStack Table [Sorting APIs](https://tanstack.com/table/latest/docs/api/features/sorting).
