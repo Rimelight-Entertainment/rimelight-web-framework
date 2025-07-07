@@ -119,7 +119,7 @@ defineExpose({
 <template>
   <ToastRoot
     ref="el"
-    v-slot="{ remaining, duration }"
+    v-slot="{ remaining, duration, open }"
     v-bind="rootProps"
     :data-orientation="orientation"
     :class="ui.root({ class: [props.ui?.root, props.class] })"
@@ -184,6 +184,6 @@ defineExpose({
       </ToastClose>
     </div>
 
-    <div v-if="progress && remaining > 0 && duration" :class="ui.progress({ class: props.ui?.progress })" :style="{ width: `${remaining / duration * 100}%` }" />
+    <div v-if="progress && open && remaining > 0 && duration" :class="ui.progress({ class: props.ui?.progress })" :style="{ width: `${remaining / duration * 100}%` }" />
   </ToastRoot>
 </template>
