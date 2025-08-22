@@ -1,7 +1,7 @@
 {
   "name": "@rimelight/rimelight-web-framework",
   "description": "An opinionated component library used internally at Rimelight Entertainment, powered by Vue, Nuxt, & Tailwind CSS.",
-  "version": "0.1.9",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.14.0",
   "repository": {
     "type": "git",
