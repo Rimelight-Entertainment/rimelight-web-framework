@@ -35,15 +35,15 @@
     "./composables/*": "./dist/runtime/composables/*",
     "./utils": {
       "types": "./dist/runtime/utils/index.d.ts",
-      "import": "./dist/runtime/utils/index.js"
+      "import": "./dist/runtime/utils/index.ts"
     },
     "./utils/*": {
       "types": "./dist/runtime/utils/*.d.ts",
-      "import": "./dist/runtime/utils/*.js"
+      "import": "./dist/runtime/utils/*.ts"
     },
     "./locale": {
       "types": "./dist/runtime/locale/index.d.ts",
-      "import": "./dist/runtime/locale/index.js"
+      "import": "./dist/runtime/locale/index.ts"
     }
   },
   "typesVersions": {
