@@ -4,8 +4,8 @@ import make from './commands/make/index.mjs'
 
 const main = defineCommand({
   meta: {
-    name: 'nuxt-ui',
-    description: 'Nuxt UI CLI'
+    name: 'rimelightWebFramework',
+    description: 'Rimelight Web Framework CLI'
   },
   subCommands: {
     make

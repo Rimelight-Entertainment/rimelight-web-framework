@@ -10,6 +10,9 @@
   "homepage": "https://rimelight.com",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/module.d.mts",
@@ -78,17 +81,17 @@
     }
   },
   "imports": {
-    "#build/ui/*": "./.nuxt/ui/*.ts",
-    "#build/ui.css": "./.nuxt/ui.css"
+    "#build/rimelight/*": "./.nuxt/rimelightWebFramework/*.ts",
+    "#build/rimelightWebFramework.css": "./.nuxt/rimelightWebFramework.css"
   },
   "bin": {
-    "nuxt-ui": "./cli/index.mjs"
+    "rimelightWebFramework": "./cli/index.mjs"
   },
   "style": "./dist/runtime/index.css",
   "main": "./dist/module.mjs",
   "files": [
-    ".nuxt/ui",
-    ".nuxt/ui.css",
+    ".nuxt/rimelightWebFramework",
+    ".nuxt/rimelightWebFramework.css",
     "dist",
     "cli",
     "vue-plugin.d.ts"
@@ -102,7 +105,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "vue-tsc --noEmit && nuxt typecheck playground",
-    "test": "vitest",
+    "test": "vitest"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
