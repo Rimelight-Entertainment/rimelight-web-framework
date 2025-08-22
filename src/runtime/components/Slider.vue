@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SliderRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/slider'
+import theme from '#build/rimelightWebFramework/slider'
 import type { TooltipProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -90,7 +90,7 @@ const sliderValue = computed({
 
 const thumbs = computed(() => sliderValue.value?.length ?? 1)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.slider || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.slider || {}) })({
   disabled: disabled.value,
   size: size.value,
   color: color.value,

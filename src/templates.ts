@@ -15,12 +15,12 @@ export function buildTemplates(options: ModuleOptions) {
   }, {} as Record<string, any>)
 }
 
-export function getTemplates(options: ModuleOptions, uiConfig: Record<string, any>) {
+export function getTemplates(options: ModuleOptions, rimelightWebFrameworkConfig: Record<string, any>) {
   const templates: NuxtTemplate[] = []
 
   for (const component in theme) {
     templates.push({
-      filename: `ui/${kebabCase(component)}.ts`,
+      filename: `rimelightWebFramework/${kebabCase(component)}.ts`,
       write: true,
       getContents: async () => {
         const template = (theme as any)[component]
@@ -59,7 +59,7 @@ export function getTemplates(options: ModuleOptions, uiConfig: Record<string, an
         }
 
         // For local development, import directly from theme
-        if (process.argv.includes('--uiDev')) {
+        if (process.argv.includes('--rimelightWebFrameworkDev')) {
           const templatePath = fileURLToPath(new URL(`./theme/${kebabCase(component)}`, import.meta.url))
           return [
             `import template from ${JSON.stringify(templatePath)}`,
@@ -83,27 +83,14 @@ export function getTemplates(options: ModuleOptions, uiConfig: Record<string, an
   }
 
   templates.push({
-    filename: 'ui.css',
+    filename: 'rimelightWebFramework.css',
     write: true,
-    getContents: () => `@source "./ui";
+    getContents: () => `@source "./rimelightWebFramework";
 
-@theme static {
-  --color-old-neutral-50: ${colors.neutral[50]};
-  --color-old-neutral-100: ${colors.neutral[100]};
-  --color-old-neutral-200: ${colors.neutral[200]};
-  --color-old-neutral-300: ${colors.neutral[300]};
-  --color-old-neutral-400: ${colors.neutral[400]};
-  --color-old-neutral-500: ${colors.neutral[500]};
-  --color-old-neutral-600: ${colors.neutral[600]};
-  --color-old-neutral-700: ${colors.neutral[700]};
-  --color-old-neutral-800: ${colors.neutral[800]};
-  --color-old-neutral-900: ${colors.neutral[900]};
-  --color-old-neutral-950: ${colors.neutral[950]};
-}
 
 @theme default inline {
-  ${[...(options.theme?.colors || []).filter(color => !colors[color as keyof typeof colors]), 'neutral'].map(color => [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(shade => `--color-${color}-${shade}: var(--ui-color-${color}-${shade});`).join('\n\t')).join('\n\t')}
-  ${options.theme?.colors?.map(color => `--color-${color}: var(--ui-${color});`).join('\n\t')}
+  ${[...(options.theme?.colors || []).filter(color => !colors[color as keyof typeof colors]), 'neutral'].map(color => [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(shade => `--color-${color}-${shade}: var(--rimelightWebFramework-color-${color}-${shade});`).join('\n\t')).join('\n\t')}
+  ${options.theme?.colors?.map(color => `--color-${color}: var(--rimelightWebFramework-${color});`).join('\n\t')}
   --radius-xs: calc(var(--ui-radius) * 0.5);
   --radius-sm: var(--ui-radius);
   --radius-md: calc(var(--ui-radius) * 1.5);
@@ -154,40 +141,34 @@ export function getTemplates(options: ModuleOptions, uiConfig: Record<string, an
   })
 
   templates.push({
-    filename: 'ui/index.ts',
+    filename: 'rimelightWebFramework/index.ts',
     write: true,
     getContents: () => Object.keys(theme).map(component => `export { default as ${component} } from './${kebabCase(component)}'`).join('\n')
   })
 
   // FIXME: `typeof colors[number]` should include all colors from the theme
   templates.push({
-    filename: 'types/ui.d.ts',
-    getContents: () => `import * as ui from '#build/ui'
-import type { TVConfig } from '@nuxt/ui'
+    filename: 'types/rimelightWebFramework.d.ts',
+    getContents: () => `import * as rimelightWebFramework from '#build/rimelightWebFramework'
+import type { TVConfig } from '@rimelight/rimelight-web-framework'
 import type { defaultConfig } from 'tailwind-variants'
 import colors from 'tailwindcss/colors'
 
-const icons = ${JSON.stringify(uiConfig.icons)};
+const icons = ${JSON.stringify(rimelightWebFrameworkConfig.icons)};
 
-type NeutralColor = 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone'
-type Color = Exclude<keyof typeof colors, 'inherit' | 'current' | 'transparent' | 'black' | 'white' | NeutralColor> | (string & {})
+type Color = Exclude<keyof typeof colors, 'inherit' | 'current' | 'transparent' | 'black' | 'white'> | (string & {})
 
-type AppConfigUI = {
+type AppConfigRimelightWebFramework = {
   colors?: {
     ${options.theme?.colors?.map(color => `'${color}'?: Color`).join('\n\t\t')}
-    neutral?: NeutralColor | (string & {})
   }
   icons?: Partial<typeof icons>
   tv?: typeof defaultConfig
-} & TVConfig<typeof ui>
+} & TVConfig<typeof rimelightWebFramework>
 
 declare module '@nuxt/schema' {
   interface AppConfigInput {
-    /**
-     * Nuxt UI theme configuration
-     * @see https://ui.nuxt.com/getting-started/theme#customize-theme
-     */
-    ui?: AppConfigUI
+    rimelightWebFramework?: AppConfigRimelightWebFramework
   }
 }
 
@@ -209,7 +190,7 @@ export {}
 }
 
 export function addTemplates(options: ModuleOptions, nuxt: Nuxt, resolve: Resolver['resolve']) {
-  const templates = getTemplates(options, nuxt.options.appConfig.ui)
+  const templates = getTemplates(options, nuxt.options.appConfig.rimelightWebFramework)
   for (const template of templates) {
     if (template.filename!.endsWith('.d.ts')) {
       addTypeTemplate(template as NuxtTypeTemplate)

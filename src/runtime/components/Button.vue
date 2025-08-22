@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/button'
+import theme from '#build/rimelightWebFramework/button'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { LinkProps, AvatarProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
@@ -93,14 +93,14 @@ const ui = computed(() => tv({
     variants: {
       active: {
         true: {
-          base: mergeClasses(appConfig.ui?.button?.variants?.active?.true?.base, props.activeClass)
+          base: mergeClasses(appConfig.rimelightWebFramework?.button?.variants?.active?.true?.base, props.activeClass)
         },
         false: {
-          base: mergeClasses(appConfig.ui?.button?.variants?.active?.false?.base, props.inactiveClass)
+          base: mergeClasses(appConfig.rimelightWebFramework?.button?.variants?.active?.false?.base, props.inactiveClass)
         }
       }
     }
-  }, appConfig.ui?.button || {})
+  }, appConfig.rimelightWebFramework?.button || {})
 })({
   color: props.color,
   variant: props.variant,

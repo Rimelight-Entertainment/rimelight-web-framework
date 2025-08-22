@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { InputMenuItem, AvatarProps } from '@nuxt/ui'
+import type { InputMenuItem, AvatarProps } from '@rimelight/rimelight-web-framework'
 
 import { upperFirst } from 'scule'
 import { refDebounced } from '@vueuse/core'
 import type { User } from '~/types'
-import theme from '#build/ui/input-menu'
+import theme from '#build/rimelightWebFramework/input-menu'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
@@ -47,10 +47,10 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-48">
-      <UInputMenu :items="items" autofocus placeholder="Search..." default-value="Apple" />
+      <RLInputMenu :items="items" autofocus placeholder="Search..." default-value="Apple" />
     </div>
     <div class="flex items-center gap-2">
-      <UInputMenu
+      <RLInputMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -60,7 +60,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputMenu
+      <RLInputMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -71,7 +71,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputMenu
+      <RLInputMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -83,13 +83,13 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex flex-col gap-4 w-48">
-      <UInputMenu :items="items" placeholder="Disabled" disabled />
-      <UInputMenu :items="items" placeholder="Required" required />
-      <UInputMenu v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
-      <UInputMenu :items="items" loading placeholder="Search..." />
+      <RLInputMenu :items="items" placeholder="Disabled" disabled />
+      <RLInputMenu :items="items" placeholder="Required" required />
+      <RLInputMenu v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
+      <RLInputMenu :items="items" loading placeholder="Search..." />
     </div>
     <div class="flex items-center gap-4">
-      <UInputMenu
+      <RLInputMenu
         v-for="size in sizes"
         :key="size"
         :items="items"
@@ -99,7 +99,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-4">
-      <UInputMenu
+      <RLInputMenu
         v-for="size in sizes"
         :key="size"
         :items="statuses"
@@ -112,10 +112,10 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         <template #leading="{ modelValue, ui }">
           <UIcon v-if="modelValue?.icon" :name="modelValue.icon" :class="ui.leadingIcon()" />
         </template>
-      </UInputMenu>
+      </RLInputMenu>
     </div>
     <div class="flex items-center gap-4">
-      <UInputMenu
+      <RLInputMenu
         v-for="size in sizes"
         :key="size"
         v-model:search-term="searchTerm"
@@ -128,12 +128,12 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         class="w-48"
       >
         <template #leading="{ modelValue, ui }">
-          <UAvatar v-if="modelValue?.avatar" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="modelValue.avatar" />
+          <RLAvatar v-if="modelValue?.avatar" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="modelValue.avatar" />
         </template>
-      </UInputMenu>
+      </RLInputMenu>
     </div>
     <div class="flex items-center gap-4">
-      <UInputMenu
+      <RLInputMenu
         v-for="size in sizes"
         :key="size"
         :items="items"
@@ -146,7 +146,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-4">
-      <UInputMenu
+      <RLInputMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"

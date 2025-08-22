@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { NavigationMenuRootProps, NavigationMenuRootEmits, NavigationMenuContentProps, NavigationMenuContentEmits, AccordionRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/navigation-menu'
+import theme from '#build/rimelightWebFramework/navigation-menu'
 import type { AvatarProps, BadgeProps, LinkProps, PopoverProps, TooltipProps } from '../types'
 import type { ArrayOrNested, DynamicSlots, MergeTypes, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
 
@@ -70,14 +70,14 @@ export interface NavigationMenuProps<T extends ArrayOrNested<NavigationMenuItem>
   as?: any
   /**
    * The icon displayed to open the menu.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
-   * @defaultValue appConfig.ui.icons.external
+   * @defaultValue appConfig.rimelightWebFramework.icons.external
    * @IconifyIcon
    */
   externalIcon?: boolean | string
@@ -220,7 +220,7 @@ const [DefineItemTemplate, ReuseItemTemplate] = createReusableTemplate<{ item: N
   }
 })
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.navigationMenu || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.navigationMenu || {}) })({
   orientation: props.orientation,
   contentOrientation: props.orientation === 'vertical' ? undefined : props.contentOrientation,
   collapsed: props.collapsed,
@@ -266,7 +266,7 @@ function getAccordionDefaultValue(list: NavigationMenuItem[], level = 0) {
           {{ get(item, props.labelKey as string) }}
         </slot>
 
-        <UIcon v-if="item.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.ui.icons.external" :class="ui.linkLabelExternalIcon({ class: [props.ui?.linkLabelExternalIcon, item.ui?.linkLabelExternalIcon], active })" />
+        <UIcon v-if="item.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.rimelightWebFramework.icons.external" :class="ui.linkLabelExternalIcon({ class: [props.ui?.linkLabelExternalIcon, item.ui?.linkLabelExternalIcon], active })" />
       </span>
 
       <component :is="orientation === 'vertical' && item.children?.length && !collapsed ? AccordionTrigger : 'span'" v-if="(!collapsed || orientation !== 'vertical') && (item.badge || (orientation === 'horizontal' && (item.children?.length || !!slots[(item.slot ? `${item.slot}-content` : 'item-content') as keyof NavigationMenuSlots<T>])) || (orientation === 'vertical' && item.children?.length) || item.trailingIcon || !!slots[(item.slot ? `${item.slot}-trailing` : 'item-trailing') as keyof NavigationMenuSlots<T>])" as="span" :class="ui.linkTrailing({ class: [props.ui?.linkTrailing, item.ui?.linkTrailing] })" @click.stop.prevent>
@@ -280,7 +280,7 @@ function getAccordionDefaultValue(list: NavigationMenuItem[], level = 0) {
             :class="ui.linkTrailingBadge({ class: [props.ui?.linkTrailingBadge, item.ui?.linkTrailingBadge] })"
           />
 
-          <UIcon v-if="(orientation === 'horizontal' && (item.children?.length || !!slots[(item.slot ? `${item.slot}-content` : 'item-content') as keyof NavigationMenuSlots<T>])) || (orientation === 'vertical' && item.children?.length)" :name="item.trailingIcon || trailingIcon || appConfig.ui.icons.chevronDown" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon], active })" />
+          <UIcon v-if="(orientation === 'horizontal' && (item.children?.length || !!slots[(item.slot ? `${item.slot}-content` : 'item-content') as keyof NavigationMenuSlots<T>])) || (orientation === 'vertical' && item.children?.length)" :name="item.trailingIcon || trailingIcon || appConfig.rimelightWebFramework.icons.chevronDown" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon], active })" />
           <UIcon v-else-if="item.trailingIcon" :name="item.trailingIcon" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon], active })" />
         </slot>
       </component>
@@ -324,7 +324,7 @@ function getAccordionDefaultValue(list: NavigationMenuItem[], level = 0) {
                           <span :class="ui.childLinkLabel({ class: [props.ui?.childLinkLabel, item.ui?.childLinkLabel], active: childActive })">
                             {{ get(childItem, props.labelKey as string) }}
 
-                            <UIcon v-if="childItem.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.ui.icons.external" :class="ui.childLinkLabelExternalIcon({ class: [props.ui?.childLinkLabelExternalIcon, item.ui?.childLinkLabelExternalIcon], active: childActive })" />
+                            <UIcon v-if="childItem.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.rimelightWebFramework.icons.external" :class="ui.childLinkLabelExternalIcon({ class: [props.ui?.childLinkLabelExternalIcon, item.ui?.childLinkLabelExternalIcon], active: childActive })" />
                           </span>
                         </ULinkBase>
                       </NavigationMenuLink>
@@ -357,7 +357,7 @@ function getAccordionDefaultValue(list: NavigationMenuItem[], level = 0) {
                         <p :class="ui.childLinkLabel({ class: [props.ui?.childLinkLabel, item.ui?.childLinkLabel], active: childActive })">
                           {{ get(childItem, props.labelKey as string) }}
 
-                          <UIcon v-if="childItem.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.ui.icons.external" :class="ui.childLinkLabelExternalIcon({ class: [props.ui?.childLinkLabelExternalIcon, item.ui?.childLinkLabelExternalIcon], active: childActive })" />
+                          <UIcon v-if="childItem.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.rimelightWebFramework.icons.external" :class="ui.childLinkLabelExternalIcon({ class: [props.ui?.childLinkLabelExternalIcon, item.ui?.childLinkLabelExternalIcon], active: childActive })" />
                         </p>
                         <p v-if="childItem.description" :class="ui.childLinkDescription({ class: [props.ui?.childLinkDescription, item.ui?.childLinkDescription], active: childActive })">
                           {{ childItem.description }}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/context-menu'
+import theme from '#build/rimelightWebFramework/context-menu'
 
 const loading = ref(false)
 
@@ -102,19 +102,19 @@ defineShortcuts(extractShortcuts(items.value))
 <template>
   <div class="flex flex-col items-center gap-8">
     <div class="flex items-center gap-2">
-      <USelect v-model="size" :items="sizes" placeholder="Size" />
+      <RLSelect v-model="size" :items="sizes" placeholder="Size" />
     </div>
 
-    <UContextMenu :items="items" :ui="{ content: 'w-48' }" :size="size">
+    <RLContextMenu :items="items" :ui="{ content: 'w-48' }" :size="size">
       <div class="flex items-center justify-center rounded-md border border-dashed border-accented text-sm aspect-video w-72">
         Right click here
       </div>
-    </UContextMenu>
+    </RLContextMenu>
 
-    <UContextMenu :items="itemsWithColor" :ui="{ content: 'w-48' }" :size="size">
+    <RLContextMenu :items="itemsWithColor" :ui="{ content: 'w-48' }" :size="size">
       <div class="flex items-center justify-center rounded-md border border-dashed border-accented text-sm aspect-video w-72">
         Color right click here
       </div>
-    </UContextMenu>
+    </RLContextMenu>
   </div>
 </template>

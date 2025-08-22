@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { NumberFieldRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/input-number'
+import theme from '#build/rimelightWebFramework/input-number'
 import type { ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -32,7 +32,7 @@ export interface InputNumberProps extends Pick<NumberFieldRootProps, 'modelValue
   increment?: ButtonProps
   /**
    * The icon displayed to increment the value.
-   * @defaultValue appConfig.ui.icons.plus
+   * @defaultValue appConfig.rimelightWebFramework.icons.plus
    * @IconifyIcon
    */
   incrementIcon?: string
@@ -45,7 +45,7 @@ export interface InputNumberProps extends Pick<NumberFieldRootProps, 'modelValue
   decrement?: ButtonProps
   /**
    * The icon displayed to decrement the value.
-   * @defaultValue appConfig.ui.icons.minus
+   * @defaultValue appConfig.rimelightWebFramework.icons.minus
    * @IconifyIcon
    */
   decrementIcon?: string
@@ -106,7 +106,7 @@ const { orientation, size: buttonGroupSize } = useButtonGroup<InputNumberProps>(
 const locale = computed(() => props.locale || codeLocale.value)
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.inputNumber || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.inputNumber || {}) })({
   color: color.value,
   variant: props.variant,
   size: inputSize.value,
@@ -115,8 +115,8 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.inputNumber 
   buttonGroup: orientation.value
 }))
 
-const incrementIcon = computed(() => props.incrementIcon || (props.orientation === 'horizontal' ? appConfig.ui.icons.plus : appConfig.ui.icons.chevronUp))
-const decrementIcon = computed(() => props.decrementIcon || (props.orientation === 'horizontal' ? appConfig.ui.icons.minus : appConfig.ui.icons.chevronDown))
+const incrementIcon = computed(() => props.incrementIcon || (props.orientation === 'horizontal' ? appConfig.rimelightWebFramework.icons.plus : appConfig.rimelightWebFramework.icons.chevronUp))
+const decrementIcon = computed(() => props.decrementIcon || (props.orientation === 'horizontal' ? appConfig.rimelightWebFramework.icons.minus : appConfig.rimelightWebFramework.icons.chevronDown))
 
 const inputRef = ref<InstanceType<typeof NumberFieldInput> | null>(null)
 

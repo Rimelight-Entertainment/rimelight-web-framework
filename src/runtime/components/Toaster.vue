@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ToastProviderProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/toaster'
+import theme from '#build/rimelightWebFramework/toaster'
 import type { ComponentConfig } from '../types/utils'
 
 type Toaster = ComponentConfig<typeof theme, AppConfig, 'toaster'>
@@ -81,7 +81,7 @@ const swipeDirection = computed(() => {
   return 'right'
 })
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.toaster || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.toaster || {}) })({
   position: props.position,
   swipeDirection: swipeDirection.value
 }))

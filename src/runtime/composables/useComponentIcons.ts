@@ -29,7 +29,7 @@ export interface UseComponentIconsProps {
   loading?: boolean
   /**
    * The icon when the `loading` prop is `true`.
-   * @defaultValue appConfig.ui.icons.loading
+   * @defaultValue appConfig.rimelightWebFramework.icons.loading
    * @IconifyIcon
    */
   loadingIcon?: string
@@ -45,14 +45,14 @@ export function useComponentIcons(componentProps: MaybeRefOrGetter<UseComponentI
 
   const leadingIconName = computed(() => {
     if (props.value.loading) {
-      return props.value.loadingIcon || appConfig.ui.icons.loading
+      return props.value.loadingIcon || appConfig.rimelightWebFramework.icons.loading
     }
 
     return props.value.leadingIcon || props.value.icon
   })
   const trailingIconName = computed(() => {
     if (props.value.loading && !isLeading.value) {
-      return props.value.loadingIcon || appConfig.ui.icons.loading
+      return props.value.loadingIcon || appConfig.rimelightWebFramework.icons.loading
     }
 
     return props.value.trailingIcon || props.value.icon

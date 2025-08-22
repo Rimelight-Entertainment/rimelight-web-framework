@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/avatar'
+import theme from '#build/rimelightWebFramework/avatar'
 import type { ChipProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -54,7 +54,7 @@ const appConfig = useAppConfig() as Avatar['AppConfig']
 const { size } = useAvatarGroup(props)
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.avatar || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.avatar || {}) })({
   size: size.value
 }))
 

@@ -2,16 +2,13 @@ import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   entries: [
-    // Vue support
-    './src/unplugin',
-    './src/vite'
+    './src/module'
   ],
   rollup: {
     replace: {
       delimiters: ['', ''],
       values: {
-        // Used in development to import directly from theme
-        'process.argv.includes(\'--uiDev\')': 'false'
+        'process.argv.includes(\'--rimelightWebFrameworkDev\')': 'false'
       }
     }
   },
@@ -20,5 +17,5 @@ export default defineBuildConfig({
       options.addRelativeDeclarationExtensions = false
     }
   },
-  externals: ['#build/ui', 'vite']
+  externals: ['#build/rimelightWebFramework']
 })

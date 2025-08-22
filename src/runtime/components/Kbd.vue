@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/kbd'
+import theme from '#build/rimelightWebFramework/kbd'
 import type { KbdKey } from '../composables/useKbd'
 import type { ComponentConfig } from '../types/utils'
 
@@ -48,7 +48,7 @@ defineSlots<KbdSlots>()
 const { getKbdKey } = useKbd()
 const appConfig = useAppConfig() as Kbd['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.kbd || {}) }))
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.kbd || {}) }))
 </script>
 
 <template>

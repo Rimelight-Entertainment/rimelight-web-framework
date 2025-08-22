@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { TimelineItem } from '@nuxt/ui'
-import theme from '#build/ui/timeline'
+import type { TimelineItem } from '@rimelight/rimelight-web-framework'
+import theme from '#build/rimelightWebFramework/timeline'
 
 const sizes = Object.keys(theme.variants.size)
 const colors = Object.keys(theme.variants.color)
@@ -43,14 +43,14 @@ const value = ref('kickoff')
 <template>
   <div class="flex flex-col gap-10">
     <div class="flex items-center justify-center gap-2">
-      <USelect v-model="color" :items="colors" placeholder="Color" />
-      <USelect v-model="orientation" :items="orientations" placeholder="Orientation" />
-      <USelect v-model="size" :items="sizes" placeholder="Size" />
-      <USelect v-model="value" :items="items.map(item => item.value)" placeholder="Value" />
-      <USelect v-model="reverse" :items="[true, false]" placeholder="Reverse" />
+      <RLSelect v-model="color" :items="colors" placeholder="Color" />
+      <RLSelect v-model="orientation" :items="orientations" placeholder="Orientation" />
+      <RLSelect v-model="size" :items="sizes" placeholder="Size" />
+      <RLSelect v-model="value" :items="items.map(item => item.value)" placeholder="Value" />
+      <RLSelect v-model="reverse" :items="[true, false]" placeholder="Reverse" />
     </div>
 
-    <UTimeline
+    <RLTimeline
       v-model="value"
       :color="color"
       :orientation="orientation"

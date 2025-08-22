@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SelectRootProps, SelectRootEmits, SelectContentProps, SelectContentEmits, SelectArrowProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/select'
+import theme from '#build/rimelightWebFramework/select'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps, ChipProps, InputProps } from '../types'
 import type { AcceptableValue, ArrayOrNested, GetItemKeys, GetItemValue, GetModelValue, GetModelValueEmits, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
@@ -48,13 +48,13 @@ export interface SelectProps<T extends ArrayOrNested<SelectItem> = ArrayOrNested
   size?: Select['variants']['size']
   /**
    * The icon displayed to open the menu.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   selectedIcon?: string
@@ -171,11 +171,11 @@ const arrowProps = toRef(() => props.arrow as SelectArrowProps)
 
 const { emitFormChange, emitFormInput, emitFormBlur, emitFormFocus, size: formGroupSize, color, id, name, highlight, disabled, ariaAttrs } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.ui.icons.chevronDown })))
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.rimelightWebFramework.icons.chevronDown })))
 
 const selectSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.select || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.select || {}) })({
   color: color.value,
   variant: props.variant,
   size: selectSize?.value,
@@ -347,7 +347,7 @@ defineExpose({
                     <slot name="item-trailing" :item="(item as NestedItem<T>)" :index="index" />
 
                     <SelectItemIndicator as-child>
-                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isSelectItem(item) && item.ui?.itemTrailingIcon] })" />
+                      <UIcon :name="selectedIcon || appConfig.rimelightWebFramework.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isSelectItem(item) && item.ui?.itemTrailingIcon] })" />
                     </SelectItemIndicator>
                   </span>
                 </slot>

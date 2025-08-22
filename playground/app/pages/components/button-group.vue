@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/button'
+import theme from '#build/rimelightWebFramework/button'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 </script>
@@ -7,60 +7,60 @@ const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.varia
 <template>
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 -ms-[110px]">
-      <UButtonGroup>
-        <UButton>Button</UButton>
-      </UButtonGroup>
+      <RLButtonGroup>
+        <RLButton>Button</RLButton>
+      </RLButtonGroup>
 
-      <UButtonGroup>
-        <UInput placeholder="Search..." />
-      </UButtonGroup>
+      <RLButtonGroup>
+        <RLInput placeholder="Search..." />
+      </RLButtonGroup>
 
-      <UButtonGroup>
-        <UButton color="neutral" variant="outline">
+      <RLButtonGroup>
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-        <UButton color="neutral" variant="subtle">
+        </RLButton>
+        <RLButton color="neutral" variant="subtle">
           Button
-        </UButton>
-        <UButton color="neutral" variant="outline">
+        </RLButton>
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-      </UButtonGroup>
+        </RLButton>
+      </RLButtonGroup>
 
-      <UButtonGroup orientation="vertical">
-        <UButton color="neutral" variant="outline">
+      <RLButtonGroup orientation="vertical">
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-        <UInput placeholder="Search..." />
-      </UButtonGroup>
+        </RLButton>
+        <RLInput placeholder="Search..." />
+      </RLButtonGroup>
 
-      <UButtonGroup>
-        <UButton color="neutral" variant="outline">
+      <RLButtonGroup>
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-        <UInput placeholder="Search..." />
-      </UButtonGroup>
+        </RLButton>
+        <RLInput placeholder="Search..." />
+      </RLButtonGroup>
 
-      <UButtonGroup>
-        <UInput placeholder="Search..." />
-        <UButton color="neutral" variant="outline">
+      <RLButtonGroup>
+        <RLInput placeholder="Search..." />
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-      </UButtonGroup>
+        </RLButton>
+      </RLButtonGroup>
 
-      <UButtonGroup>
-        <UBadge color="neutral" variant="outline" size="lg" label="https://" />
-        <UInput color="neutral" variant="outline" placeholder="www.example.com" />
-      </UButtonGroup>
+      <RLButtonGroup>
+        <RLBadge color="neutral" variant="outline" size="lg" label="https://" />
+        <RLInput color="neutral" variant="outline" placeholder="www.example.com" />
+      </RLButtonGroup>
     </div>
 
     <div class="flex gap-4 items-center justify-center">
-      <UButtonGroup v-for="size in sizes" :key="size" :size="size">
-        <UInput placeholder="Search..." />
-        <UButton color="neutral" variant="outline">
+      <RLButtonGroup v-for="size in sizes" :key="size" :size="size">
+        <RLInput placeholder="Search..." />
+        <RLButton color="neutral" variant="outline">
           Button
-        </UButton>
-      </UButtonGroup>
+        </RLButton>
+      </RLButtonGroup>
     </div>
   </div>
 </template>

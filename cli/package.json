@@ -1,5 +1,5 @@
 {
-  "name": "@nuxt/ui-cli",
+  "name": "@rimelight/rimelight-web-framework-cli",
   "type": "module",
   "exports": {
     ".": "./index.mjs"

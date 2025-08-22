@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { ProgressRootProps, ProgressRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/progress'
+import theme from '#build/rimelightWebFramework/progress'
 import type { ComponentConfig } from '../types/utils'
 
 type Progress = ComponentConfig<typeof theme, AppConfig, 'progress'>
@@ -157,7 +157,7 @@ function stepVariant(index: number | string) {
   return 'other'
 }
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.progress || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.progress || {}) })({
   animation: props.animation,
   size: props.size,
   color: props.color,

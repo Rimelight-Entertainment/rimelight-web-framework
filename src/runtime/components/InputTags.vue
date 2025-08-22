@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
 import type { TagsInputRootProps, TagsInputRootEmits, AcceptableInputValue } from 'reka-ui'
-import theme from '#build/ui/input-tags'
+import theme from '#build/rimelightWebFramework/input-tags'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
@@ -36,7 +36,7 @@ export interface InputTagsProps<T extends InputTagItem = InputTagItem> extends P
   autofocusDelay?: number
   /**
    * The icon displayed to delete a tag.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   deleteIcon?: string
@@ -94,7 +94,7 @@ const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponen
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.inputTags || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.inputTags || {}) })({
   color: color.value,
   variant: props.variant,
   size: inputSize?.value,
@@ -175,7 +175,7 @@ defineExpose({
         :disabled="disabled"
       >
         <slot name="item-delete" :item="(item as T)" :index="index">
-          <UIcon :name="deleteIcon || appConfig.ui.icons.close" :class="ui.itemDeleteIcon({ class: [props.ui?.itemDeleteIcon] })" />
+          <UIcon :name="deleteIcon || appConfig.rimelightWebFramework.icons.close" :class="ui.itemDeleteIcon({ class: [props.ui?.itemDeleteIcon] })" />
         </slot>
       </TagsInputItemDelete>
     </TagsInputItem>

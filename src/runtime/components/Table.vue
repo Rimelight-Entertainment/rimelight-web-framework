@@ -35,7 +35,7 @@ import type {
   VisibilityOptions,
   VisibilityState
 } from '@tanstack/vue-table'
-import theme from '#build/ui/table'
+import theme from '#build/rimelightWebFramework/table'
 import type { ComponentConfig } from '../types/utils'
 
 declare module '@tanstack/table-core' {
@@ -224,7 +224,7 @@ const data = ref(props.data ?? []) as Ref<T[]>
 const columns = computed<TableColumn<T>[]>(() => props.columns ?? Object.keys(data.value[0] ?? {}).map((accessorKey: string) => ({ accessorKey, header: upperFirst(accessorKey) })))
 const meta = computed(() => props.meta ?? {})
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.table || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.table || {}) })({
   sticky: props.sticky,
   loading: props.loading,
   loadingColor: props.loadingColor,

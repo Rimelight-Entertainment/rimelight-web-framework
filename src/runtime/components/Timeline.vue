@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/block-tag-newline -->
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/timeline'
+import theme from '#build/rimelightWebFramework/timeline'
 import type { AvatarProps } from '../types'
 import type { DynamicSlots, ComponentConfig } from '../types/utils'
 
@@ -73,7 +73,7 @@ const modelValue = defineModel<string | number>()
 
 const appConfig = useAppConfig() as Timeline['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.timeline || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.timeline || {}) })({
   orientation: props.orientation,
   size: props.size,
   color: props.color,

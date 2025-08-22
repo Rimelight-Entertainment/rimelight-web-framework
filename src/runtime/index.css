@@ -1,4 +1,4 @@
-@import '#build/ui.css';
+@import '#build/rimelightWebFramework.css';
 @import './keyframes.css';
 
 @variant light (&:where(.light, .light *));

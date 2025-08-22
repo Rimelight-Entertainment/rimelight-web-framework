@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import theme from '#build/ui/badge'
+import theme from '#build/rimelightWebFramework/badge'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
@@ -9,15 +9,15 @@ const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme
 <template>
   <div class="flex flex-col gap-2">
     <div class="flex items-center gap-2">
-      <UBadge class="font-bold">
+      <RLBadge class="font-bold">
         Badge
-      </UBadge>
+      </RLBadge>
     </div>
     <div class="flex items-center gap-2">
-      <UBadge v-for="variant in variants" :key="variant" icon="i-lucide-rocket" :label="upperFirst(variant)" :variant="variant" />
+      <RLBadge v-for="variant in variants" :key="variant" icon="i-lucide-rocket" :label="upperFirst(variant)" :variant="variant" />
     </div>
     <div class="flex items-center gap-2">
-      <UBadge
+      <RLBadge
         v-for="variant in variants"
         :key="variant"
         icon="i-lucide-rocket"
@@ -27,7 +27,7 @@ const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme
       />
     </div>
     <div class="flex items-center gap-2">
-      <UBadge
+      <RLBadge
         v-for="variant in variants"
         :key="variant"
         :avatar="{ src: 'https://github.com/benjamincanac.png' }"
@@ -37,19 +37,19 @@ const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme
       />
     </div>
     <div class="flex items-center gap-2 ms-[-90px]">
-      <UBadge v-for="size in sizes" :key="size" label="Badge" :size="size" />
+      <RLBadge v-for="size in sizes" :key="size" label="Badge" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-122px]">
-      <UBadge v-for="size in sizes" :key="size" icon="i-lucide-rocket" label="Badge" :size="size" />
+      <RLBadge v-for="size in sizes" :key="size" icon="i-lucide-rocket" label="Badge" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-130px]">
-      <UBadge v-for="size in sizes" :key="size" :avatar="{ src: 'https://github.com/benjamincanac.png' }" label="Badge" :size="size" />
+      <RLBadge v-for="size in sizes" :key="size" :avatar="{ src: 'https://github.com/benjamincanac.png' }" label="Badge" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-52px]">
-      <UBadge v-for="size in sizes" :key="size" icon="i-lucide-rocket" :size="size" />
+      <RLBadge v-for="size in sizes" :key="size" icon="i-lucide-rocket" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-60px]">
-      <UBadge
+      <RLBadge
         v-for="size in sizes"
         :key="size"
         :avatar="{ src: 'https://github.com/benjamincanac.png' }"

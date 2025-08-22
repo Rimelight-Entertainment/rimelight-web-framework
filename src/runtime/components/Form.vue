@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/form'
+import theme from '#build/rimelightWebFramework/form'
 import type { FormSchema, FormError, FormInputEvents, FormErrorEvent, FormSubmitEvent, FormEvent, Form, FormErrorWithId, InferInput, InferOutput, FormData } from '../types/form'
 import type { ComponentConfig } from '../types/utils'
 
@@ -90,7 +90,7 @@ defineSlots<FormSlots>()
 
 const appConfig = useAppConfig() as FormConfig['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.form || {}) }))
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.form || {}) }))
 
 const formId = props.id ?? useId() as string
 

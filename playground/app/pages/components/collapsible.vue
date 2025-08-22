@@ -6,8 +6,8 @@ const appConfig = useAppConfig()
 
 <template>
   <div class="flex-1">
-    <UCollapsible class="flex flex-col gap-2 w-48">
-      <UButton
+    <RLCollapsible class="flex flex-col gap-2 w-48">
+      <RLButton
         class="group"
         icon="i-lucide-lightbulb"
         :trailing-icon="appConfig.ui.icons.chevronDown"
@@ -19,8 +19,8 @@ const appConfig = useAppConfig()
       />
 
       <template #content>
-        <Placeholder class="h-96 w-full" />
+        <RLPlaceholder class="h-96 w-full" />
       </template>
-    </UCollapsible>
+    </RLCollapsible>
   </div>
 </template>

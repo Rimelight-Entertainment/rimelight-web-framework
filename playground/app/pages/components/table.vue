@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 import { upperFirst } from 'scule'
-import type { TableColumn, TableRow } from '@nuxt/ui'
+import type { TableColumn, TableRow } from '@rimelight/rimelight-web-framework'
 import { getPaginationRowModel } from '@tanstack/vue-table'
 import { useClipboard, refDebounced } from '@vueuse/core'
 
-const UButton = resolveComponent('UButton')
-const UCheckbox = resolveComponent('UCheckbox')
-const UBadge = resolveComponent('UBadge')
-const UDropdownMenu = resolveComponent('UDropdownMenu')
+const RLButton = resolveComponent('RLButton')
+const RLCheckbox = resolveComponent('RLCheckbox')
+const RLBadge = resolveComponent('RLBadge')
+const RLDropdownMenu = resolveComponent('RLDropdownMenu')
 
 const toast = useToast()
 const { copy } = useClipboard()
@@ -178,12 +178,12 @@ function getRowItems(row: TableRow<Payment>) {
 
 const columns: TableColumn<Payment>[] = [{
   id: 'select',
-  header: ({ table }) => h(UCheckbox, {
+  header: ({ table }) => h(RLCheckbox, {
     'modelValue': table.getIsSomePageRowsSelected() ? 'indeterminate' : table.getIsAllPageRowsSelected(),
     'onUpdate:modelValue': (value: boolean | 'indeterminate') => table.toggleAllPageRowsSelected(!!value),
     'aria-label': 'Select all'
   }),
-  cell: ({ row }) => h(UCheckbox, {
+  cell: ({ row }) => h(RLCheckbox, {
     'modelValue': row.getIsSelected(),
     'onUpdate:modelValue': (value: boolean | 'indeterminate') => row.toggleSelected(!!value),
     'aria-label': 'Select row'
@@ -222,14 +222,14 @@ const columns: TableColumn<Payment>[] = [{
       refunded: 'neutral' as const
     })[row.getValue('status') as string]
 
-    return h(UBadge, { class: 'capitalize', variant: 'subtle', color }, () => row.getValue('status'))
+    return h(RLBadge, { class: 'capitalize', variant: 'subtle', color }, () => row.getValue('status'))
   }
 }, {
   accessorKey: 'email',
   header: ({ column }) => {
     const isSorted = column.getIsSorted()
 
-    return h(UButton, {
+    return h(RLButton, {
       color: 'neutral',
       variant: 'ghost',
       label: 'Email',
@@ -266,13 +266,13 @@ const columns: TableColumn<Payment>[] = [{
   id: 'actions',
   enableHiding: false,
   cell: ({ row }) => {
-    return h('div', { class: 'text-right' }, h(UDropdownMenu, {
+    return h('div', { class: 'text-right' }, h(RLDropdownMenu, {
       'content': {
         align: 'end'
       },
       'items': getRowItems(row),
       'aria-label': 'Actions dropdown'
-    }, () => h(UButton, {
+    }, () => h(RLButton, {
       'icon': 'i-lucide-ellipsis-vertical',
       'color': 'neutral',
       'variant': 'ghost',
@@ -355,17 +355,17 @@ onMounted(() => {
 <template>
   <div class="h-full flex flex-col flex-1 gap-4 w-full">
     <div class="flex gap-2 items-center">
-      <UInput
+      <RLInput
         :model-value="(table?.tableApi?.getColumn('email')?.getFilterValue() as string)"
         class="max-w-sm"
         placeholder="Filter emails..."
         @update:model-value="table?.tableApi?.getColumn('email')?.setFilterValue($event)"
       />
 
-      <UButton color="neutral" label="Randomize" @click="randomize" />
-      <UButton color="neutral" label="Add element" @click="addElement" />
+      <RLButton color="neutral" label="Randomize" @click="randomize" />
+      <RLButton color="neutral" label="Add element" @click="addElement" />
 
-      <UDropdownMenu
+      <RLDropdownMenu
         :items="table?.tableApi?.getAllColumns().filter(column => column.getCanHide()).map(column => ({
           label: upperFirst(column.id),
           type: 'checkbox' as const,
@@ -379,18 +379,18 @@ onMounted(() => {
         }))"
         :content="{ align: 'end' }"
       >
-        <UButton
+        <RLButton
           label="Columns"
           color="neutral"
           variant="outline"
           trailing-icon="i-lucide-chevron-down"
           class="ms-auto"
         />
-      </UDropdownMenu>
+      </RLDropdownMenu>
     </div>
 
-    <UContextMenu :items="contextmenuItems">
-      <UTable
+    <RLContextMenu :items="contextmenuItems">
+      <RLTable
         ref="table"
         :data="data"
         :columns="columns"
@@ -417,16 +417,16 @@ onMounted(() => {
         <template #expanded="{ row }">
           <pre>{{ row.original }}</pre>
         </template>
-      </UTable>
-    </UContextMenu>
+      </RLTable>
+    </RLContextMenu>
 
-    <UPopover :content="{ side: 'top', sideOffset: 16, updatePositionStrategy: 'always' }" :open="popoverOpenDebounced" :reference="reference">
+    <RLPopover :content="{ side: 'top', sideOffset: 16, updatePositionStrategy: 'always' }" :open="popoverOpenDebounced" :reference="reference">
       <template #content>
         <div class="p-4">
           {{ popoverRow?.original?.id }}
         </div>
       </template>
-    </UPopover>
+    </RLPopover>
 
     <div class="flex items-center justify-between gap-3">
       <div class="text-sm text-muted">
@@ -435,22 +435,22 @@ onMounted(() => {
       </div>
 
       <div class="flex items-center gap-1.5">
-        <UButton
+        <RLButton
           color="neutral"
           variant="outline"
           :disabled="!table?.tableApi?.getCanPreviousPage()"
           @click="table?.tableApi?.previousPage()"
         >
           Prev
-        </UButton>
-        <UButton
+        </RLButton>
+        <RLButton
           color="neutral"
           variant="outline"
           :disabled="!table?.tableApi?.getCanNextPage()"
           @click="table?.tableApi?.nextPage()"
         >
           Next
-        </UButton>
+        </RLButton>
       </div>
     </div>
   </div>

@@ -1,55 +1,55 @@
 <template>
   <div class="flex items-center gap-4">
     <div class="flex flex-col items-start gap-2 text-sm">
-      <ULink raw>
+      <RLLink raw>
         Button raw
-      </ULink>
+      </RLLink>
 
-      <ULink active>
+      <RLLink active>
         Button active
-      </ULink>
-      <ULink active class="font-medium" active-class="text-highlighted">
+      </RLLink>
+      <RLLink active class="font-medium" active-class="text-highlighted">
         Button active with class
-      </ULink>
-      <ULink active disabled>
+      </RLLink>
+      <RLLink active disabled>
         Button active disabled
-      </ULink>
+      </RLLink>
 
-      <ULink>
+      <RLLink>
         Button inactive
-      </ULink>
-      <ULink class="font-medium" inactive-class="hover:text-primary">
+      </RLLink>
+      <RLLink class="font-medium" inactive-class="hover:text-primary">
         Button inactive with class
-      </ULink>
-      <ULink disabled>
+      </RLLink>
+      <RLLink disabled>
         Button inactive disabled
-      </ULink>
+      </RLLink>
     </div>
 
     <div class="flex flex-col items-start gap-2 text-sm">
-      <ULink to="/components/link" raw>
+      <RLLink to="/components/link" raw>
         Link raw
-      </ULink>
+      </RLLink>
 
-      <ULink to="/components/link">
+      <RLLink to="/components/link">
         Link active
-      </ULink>
-      <ULink to="/components/link" class="font-medium" active-class="text-highlighted">
+      </RLLink>
+      <RLLink to="/components/link" class="font-medium" active-class="text-highlighted">
         Link active with class
-      </ULink>
-      <ULink to="/components/link" disabled>
+      </RLLink>
+      <RLLink to="/components/link" disabled>
         Link active disabled
-      </ULink>
+      </RLLink>
 
-      <ULink to="/components/button">
+      <RLLink to="/components/button">
         Link inactive
-      </ULink>
-      <ULink to="/components/button" class="font-medium" inactive-class="hover:text-primary">
+      </RLLink>
+      <RLLink to="/components/button" class="font-medium" inactive-class="hover:text-primary">
         Link inactive with class
-      </ULink>
-      <ULink to="/components/button" disabled>
+      </RLLink>
+      <RLLink to="/components/button" disabled>
         Link inactive disabled
-      </ULink>
+      </RLLink>
     </div>
   </div>
 </template>

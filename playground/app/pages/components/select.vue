@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { SelectItem, AvatarProps } from '@nuxt/ui'
+import type { SelectItem, AvatarProps } from '@rimelight/rimelight-web-framework'
 import { upperFirst } from 'scule'
-import theme from '#build/ui/select'
+import theme from '#build/rimelightWebFramework/select'
 import type { User } from '~/types'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
@@ -54,10 +54,10 @@ function getUserAvatar(value: string) {
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-48">
-      <USelect :items="items" placeholder="Search..." default-value="Apple" />
+      <RLSelect :items="items" placeholder="Search..." default-value="Apple" />
     </div>
     <div class="flex items-center gap-2">
-      <USelect
+      <RLSelect
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -67,7 +67,7 @@ function getUserAvatar(value: string) {
       />
     </div>
     <div class="flex items-center gap-2">
-      <USelect
+      <RLSelect
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -78,7 +78,7 @@ function getUserAvatar(value: string) {
       />
     </div>
     <div class="flex items-center gap-2">
-      <USelect
+      <RLSelect
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -90,13 +90,13 @@ function getUserAvatar(value: string) {
       />
     </div>
     <div class="flex flex-col gap-4 w-48">
-      <USelect :items="items" placeholder="Disabled" disabled />
-      <USelect :items="items" placeholder="Required" required />
-      <USelect v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
-      <USelect :items="items" loading placeholder="Search..." />
+      <RLSelect :items="items" placeholder="Disabled" disabled />
+      <RLSelect :items="items" placeholder="Required" required />
+      <RLSelect v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
+      <RLSelect :items="items" loading placeholder="Search..." />
     </div>
     <div class="flex items-center gap-4">
-      <USelect
+      <RLSelect
         v-for="size in sizes"
         :key="size"
         :items="items"
@@ -106,7 +106,7 @@ function getUserAvatar(value: string) {
       />
     </div>
     <div class="flex items-center gap-4">
-      <USelect
+      <RLSelect
         v-for="size in sizes"
         :key="size"
         :items="statuses"
@@ -120,10 +120,10 @@ function getUserAvatar(value: string) {
         <template #leading="{ modelValue, ui }">
           <UIcon v-if="modelValue" :name="getStatusIcon(modelValue)" :class="ui.leadingIcon()" />
         </template>
-      </USelect>
+      </RLSelect>
     </div>
     <div class="flex items-center gap-4">
-      <USelect
+      <RLSelect
         v-for="size in sizes"
         :key="size"
         :items="users || []"
@@ -135,9 +135,9 @@ function getUserAvatar(value: string) {
         value-key="value"
       >
         <template #leading="{ modelValue, ui }">
-          <UAvatar v-if="modelValue" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="getUserAvatar(modelValue)" />
+          <RLAvatar v-if="modelValue" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="getUserAvatar(modelValue)" />
         </template>
-      </USelect>
+      </RLSelect>
     </div>
   </div>
 </template>

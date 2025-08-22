@@ -5,7 +5,7 @@ import MagicString from 'magic-string'
 import { resolvePathSync } from 'mlly'
 
 import { runtimeDir } from '../unplugin'
-import type { NuxtUIOptions } from '../unplugin'
+import type { RimelightWebFrameworkOptions } from '../unplugin'
 
 import type { UnpluginOptions } from 'unplugin'
 
@@ -13,7 +13,7 @@ import type { UnpluginOptions } from 'unplugin'
  * This plugin provides the necessary transforms to allow loading the
  * Nuxt UI _Nuxt_ plugins in `src/runtime/plugins/` in a pure Vue environment.
  */
-export default function PluginsPlugin(options: NuxtUIOptions) {
+export default function PluginsPlugin(options: RimelightWebFrameworkOptions) {
   const plugins = globSync(['**/*', '!*.d.ts'], { cwd: join(runtimeDir, 'plugins'), absolute: true })
 
   plugins.unshift(resolvePathSync('../runtime/vue/plugins/head', { extensions: ['.ts', '.mjs', '.js'], url: import.meta.url }))
@@ -25,7 +25,7 @@ export default function PluginsPlugin(options: NuxtUIOptions) {
     name: 'nuxt:ui:plugins',
     enforce: 'pre',
     resolveId(id) {
-      if (id === '@nuxt/ui/vue-plugin') {
+      if (id === '@rimelight/rimelight-web-framework/vue-plugin') {
         return 'virtual:nuxt-ui-plugins'
       }
     },
@@ -60,7 +60,7 @@ ${plugins.map(p => `    app.use(${genSafeVariableName(p)})`).join('\n')}
           // Opt-out Nuxt UI from Vite's pre-bundling,
           // as we need Vite's pipeline to resolve imports like `#imports`
           optimizeDeps: {
-            exclude: ['@nuxt/ui']
+            exclude: ['@rimelight/rimelight-web-framework']
           }
         }
       }

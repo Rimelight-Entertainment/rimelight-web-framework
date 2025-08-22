@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/tabs'
+import theme from '#build/rimelightWebFramework/tabs'
 
 const colors = Object.keys(theme.variants.color)
 const variants = Object.keys(theme.variants.variant)
@@ -33,14 +33,14 @@ const items = [{
 <template>
   <div class="flex flex-col items-center gap-12">
     <div class="flex items-center gap-2">
-      <USelect v-model="color" :items="colors" placeholder="Color" />
-      <USelect v-model="variant" :items="variants" placeholder="Variant" />
-      <USelect v-model="orientation" :items="orientations" placeholder="Orientation" />
-      <USelect v-model="size" :items="sizes" placeholder="Size" />
+      <RLSelect v-model="color" :items="colors" placeholder="Color" />
+      <RLSelect v-model="variant" :items="variants" placeholder="Variant" />
+      <RLSelect v-model="orientation" :items="orientations" placeholder="Orientation" />
+      <RLSelect v-model="size" :items="sizes" placeholder="Size" />
     </div>
 
     <div class="flex gap-4">
-      <UTabs
+      <RLTabs
         :color="color"
         :variant="variant"
         :orientation="orientation"
@@ -49,7 +49,7 @@ const items = [{
         :content="false"
       />
 
-      <UTabs
+      <RLTabs
         :color="color"
         :variant="variant"
         :orientation="orientation"
@@ -60,7 +60,7 @@ const items = [{
         <template #custom="{ item }">
           <span class="text-muted">Custom: {{ item.content }}</span>
         </template>
-      </UTabs>
+      </RLTabs>
     </div>
   </div>
 </template>

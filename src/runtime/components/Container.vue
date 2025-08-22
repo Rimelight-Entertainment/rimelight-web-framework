@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/container'
+import theme from '#build/rimelightWebFramework/container'
 import type { ComponentConfig } from '../types/utils'
 
 type Container = ComponentConfig<typeof theme, AppConfig, 'container'>
@@ -30,7 +30,7 @@ defineSlots<ContainerSlots>()
 
 const appConfig = useAppConfig() as Container['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.container || {}) }))
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.container || {}) }))
 </script>
 
 <template>

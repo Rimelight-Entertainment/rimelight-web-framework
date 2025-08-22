@@ -13,10 +13,10 @@ function getColor(color: keyof typeof colors, shade: typeof shades[number]): str
 }
 
 function generateShades(key: string, value: string) {
-  return `${shades.map(shade => `--ui-color-${key}-${shade}: var(--color-${value === 'neutral' ? 'old-neutral' : value}-${shade}, ${getColor(value as keyof typeof colors, shade)});`).join('\n  ')}`
+  return `${shades.map(shade => `--rimelightWebFramework-color-${key}-${shade}: var(--color-${value === 'neutral' ? 'old-neutral' : value}-${shade}, ${getColor(value as keyof typeof colors, shade)});`).join('\n  ')}`
 }
 function generateColor(key: string, shade: number) {
-  return `--ui-${key}: var(--ui-color-${key}-${shade});`
+  return `--rimelightWebFramework-${key}: var(--rimelightWebFramework-color-${key}-${shade});`
 }
 
 export default defineNuxtPlugin(() => {
@@ -24,11 +24,11 @@ export default defineNuxtPlugin(() => {
   const nuxtApp = useNuxtApp()
 
   const root = computed(() => {
-    const { neutral, ...colors } = appConfig.ui.colors
+    const { neutral, ...colors } = appConfig.rimelightWebFramework.colors
 
     return `@layer base {
   :root {
-  ${Object.entries(appConfig.ui.colors).map(([key, value]: [string, string]) => generateShades(key, value)).join('\n  ')}
+  ${Object.entries(appConfig.rimelightWebFramework.colors).map(([key, value]: [string, string]) => generateShades(key, value)).join('\n  ')}
   }
   :root, .light {
   ${Object.keys(colors).map(key => generateColor(key, 500)).join('\n  ')}
@@ -44,7 +44,7 @@ export default defineNuxtPlugin(() => {
     style: [{
       innerHTML: () => root.value,
       tagPriority: -2,
-      id: 'nuxt-ui-colors'
+      id: 'rimelightWebFramework-colors'
     }]
   }
 
@@ -53,11 +53,11 @@ export default defineNuxtPlugin(() => {
     const style = document.createElement('style')
 
     style.innerHTML = root.value
-    style.setAttribute('data-nuxt-ui-colors', '')
+    style.setAttribute('data-rimelightWebFramework-colors', '')
     document.head.appendChild(style)
 
     headData.script = [{
-      innerHTML: 'document.head.removeChild(document.querySelector(\'[data-nuxt-ui-colors]\'))'
+      innerHTML: 'document.head.removeChild(document.querySelector(\'[data-rimelightWebFramework-colors]\'))'
     }]
   }
 

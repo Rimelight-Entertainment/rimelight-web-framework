@@ -44,6 +44,7 @@ const components = [
   'input-tags',
   'kbd',
   'link',
+  'layout-box',
   'modal',
   'navigation-menu',
   'pagination',
@@ -86,22 +87,22 @@ defineShortcuts({
 })
 
 useHead({
-  title: 'Nuxt UI - Playground'
+  title: 'Playground'
 })
 </script>
 
 <template>
   <template v-if="!$route.path.startsWith('/__nuxt_ui__')">
-    <UApp :toaster="appConfig.toaster">
-      <div class="h-screen w-screen overflow-hidden flex flex-col lg:flex-row min-h-0 bg-default" data-vaul-drawer-wrapper>
-        <UNavigationMenu :items="items" orientation="vertical" class="hidden lg:flex border-e border-default overflow-y-auto w-48 p-4" />
-        <UNavigationMenu :items="items" orientation="horizontal" class="lg:hidden border-b border-default [&>div]:min-w-min overflow-x-auto" />
+    <RLApp :toaster="appConfig.toaster">
+      <div class="h-screen w-screen overflow-hidden flex flex-col lg:flex-row min-h-0 bg-primary-950" data-vaul-drawer-wrapper>
+        <RLNavigationMenu :items="items" orientation="vertical" class="hidden bg-primary-900 text-white lg:flex border-e border-default overflow-y-auto w-48 p-4" />
+        <RLNavigationMenu :items="items" orientation="horizontal" class="lg:hidden border-b border-default [&>div]:min-w-min overflow-x-auto" />
 
         <div class="fixed top-15 lg:top-3 end-4 flex items-center gap-2">
           <ClientOnly v-if="!colorMode?.forced">
-            <UButton
+            <RLButton
               :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-              color="neutral"
+              color="primary"
               variant="ghost"
               :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
               @click="isDark = !isDark"
@@ -117,13 +118,13 @@ useHead({
           <NuxtPage />
         </div>
 
-        <UModal v-model:open="isCommandPaletteOpen" class="sm:h-96">
+        <RLModal v-model:open="isCommandPaletteOpen" class="sm:h-96">
           <template #content>
-            <UCommandPalette placeholder="Search a component..." :groups="[{ id: 'items', items }]" :fuse="{ resultLimit: 100 }" @update:model-value="onSelect" @update:open="value => isCommandPaletteOpen = value" />
+            <RLCommandPalette placeholder="Search a component..." :groups="[{ id: 'items', items }]" :fuse="{ resultLimit: 100 }" @update:model-value="onSelect" @update:open="value => isCommandPaletteOpen = value" />
           </template>
-        </UModal>
+        </RLModal>
       </div>
-    </UApp>
+    </RLApp>
   </template>
   <template v-else>
     <NuxtPage />

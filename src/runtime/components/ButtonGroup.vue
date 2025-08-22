@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/button-group'
+import theme from '#build/rimelightWebFramework/button-group'
 import type { ComponentConfig } from '../types/utils'
 
 type ButtonGroup = ComponentConfig<typeof theme, AppConfig, 'buttonGroup'>
@@ -44,7 +44,7 @@ defineSlots<ButtonGroupSlots>()
 const appConfig = useAppConfig() as ButtonGroup['AppConfig']
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.buttonGroup || {}) }))
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.buttonGroup || {}) }))
 
 provide(buttonGroupInjectionKey, computed(() => ({
   orientation: props.orientation,

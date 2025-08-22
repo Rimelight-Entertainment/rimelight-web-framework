@@ -1,5 +1,4 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "exclude": ["cli", "docs", "dist", "playground", "playground-vue", "node_modules"]
+  "exclude": ["cli", "dist", "playground", "node_modules"]
 }

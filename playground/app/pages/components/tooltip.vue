@@ -1,21 +1,21 @@
 <template>
   <div class="flex flex-col gap-2">
-    <UTooltip text="Top" :kbds="['meta', 'T']" :content="{ side: 'top' }" arrow>
-      <UButton label="Top" color="neutral" variant="outline" block />
-    </UTooltip>
+    <RLTooltip text="Top" :kbds="['meta', 'T']" :content="{ side: 'top' }" arrow>
+      <RLButton label="Top" color="neutral" variant="outline" block />
+    </RLTooltip>
 
     <div class="grid grid-cols-2 gap-2">
-      <UTooltip text="Left" :kbds="['meta', 'L']" :content="{ side: 'left' }" arrow>
-        <UButton label="Left" color="neutral" variant="outline" block />
-      </UTooltip>
+      <RLTooltip text="Left" :kbds="['meta', 'L']" :content="{ side: 'left' }" arrow>
+        <RLButton label="Left" color="neutral" variant="outline" block />
+      </RLTooltip>
 
-      <UTooltip text="Right" :kbds="['meta', 'R']" :content="{ side: 'right' }" arrow>
-        <UButton label="Right" color="neutral" variant="outline" block />
-      </UTooltip>
+      <RLTooltip text="Right" :kbds="['meta', 'R']" :content="{ side: 'right' }" arrow>
+        <RLButton label="Right" color="neutral" variant="outline" block />
+      </RLTooltip>
     </div>
 
-    <UTooltip text="Bottom" :kbds="['meta', 'B']" arrow>
-      <UButton label="Bottom" color="neutral" variant="outline" block />
-    </UTooltip>
+    <RLTooltip text="Bottom" :kbds="['meta', 'B']" arrow>
+      <RLButton label="Bottom" color="neutral" variant="outline" block />
+    </RLTooltip>
   </div>
 </template>

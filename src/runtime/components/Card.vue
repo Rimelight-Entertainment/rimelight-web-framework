@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/card'
+import theme from '#build/rimelightWebFramework/card'
 import type { ComponentConfig } from '../types/utils'
 
 type Card = ComponentConfig<typeof theme, AppConfig, 'card'>
@@ -37,7 +37,7 @@ const slots = defineSlots<CardSlots>()
 
 const appConfig = useAppConfig() as Card['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.card || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.card || {}) })({
   variant: props.variant
 }))
 </script>

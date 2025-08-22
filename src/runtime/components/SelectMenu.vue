@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ComboboxRootProps, ComboboxRootEmits, ComboboxContentProps, ComboboxContentEmits, ComboboxArrowProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/select-menu'
+import theme from '#build/rimelightWebFramework/select-menu'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps, ChipProps, InputProps } from '../types'
 import type { AcceptableValue, ArrayOrNested, GetItemKeys, GetItemValue, GetModelValue, GetModelValueEmits, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
@@ -55,13 +55,13 @@ export interface SelectMenuProps<T extends ArrayOrNested<SelectMenuItem> = Array
   required?: boolean
   /**
    * The icon displayed to open the menu.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   selectedIcon?: string
@@ -211,13 +211,13 @@ const searchInputProps = toRef(() => defu(props.searchInput, { placeholder: t('s
 
 const { emitFormBlur, emitFormFocus, emitFormInput, emitFormChange, size: formGroupSize, color, id, name, highlight, disabled, ariaAttrs } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.ui.icons.chevronDown })))
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.rimelightWebFramework.icons.chevronDown })))
 
 const selectSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
 const [DefineCreateItemTemplate, ReuseCreateItemTemplate] = createReusableTemplate()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.selectMenu || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.selectMenu || {}) })({
   color: color.value,
   variant: props.variant,
   size: selectSize?.value,
@@ -494,7 +494,7 @@ defineExpose({
                       <slot name="item-trailing" :item="(item as NestedItem<T>)" :index="index" />
 
                       <ComboboxItemIndicator as-child>
-                        <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isSelectItem(item) && item.ui?.itemTrailingIcon] })" />
+                        <UIcon :name="selectedIcon || appConfig.rimelightWebFramework.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isSelectItem(item) && item.ui?.itemTrailingIcon] })" />
                       </ComboboxItemIndicator>
                     </span>
                   </slot>

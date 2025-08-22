@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PaginationRootProps, PaginationRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/pagination'
+import theme from '#build/rimelightWebFramework/pagination'
 import type { ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -15,31 +15,31 @@ export interface PaginationProps extends Partial<Pick<PaginationRootProps, 'defa
   as?: any
   /**
    * The icon to use for the first page control.
-   * @defaultValue appConfig.ui.icons.chevronDoubleLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDoubleLeft
    * @IconifyIcon
    */
   firstIcon?: string
   /**
    * The icon to use for the previous page control.
-   * @defaultValue appConfig.ui.icons.chevronLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronLeft
    * @IconifyIcon
    */
   prevIcon?: string
   /**
    * The icon to use for the next page control.
-   * @defaultValue appConfig.ui.icons.chevronRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronRight
    * @IconifyIcon
    */
   nextIcon?: string
   /**
    * The icon to use for the last page control.
-   * @defaultValue appConfig.ui.icons.chevronDoubleRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDoubleRight
    * @IconifyIcon
    */
   lastIcon?: string
   /**
    * The icon to use for the ellipsis control.
-   * @defaultValue appConfig.ui.icons.ellipsis
+   * @defaultValue appConfig.rimelightWebFramework.icons.ellipsis
    * @IconifyIcon
    */
   ellipsisIcon?: string
@@ -129,13 +129,13 @@ const appConfig = useAppConfig() as Pagination['AppConfig']
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultPage', 'disabled', 'itemsPerPage', 'page', 'showEdges', 'siblingCount', 'total'), emits)
 
-const firstIcon = computed(() => props.firstIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronDoubleRight : appConfig.ui.icons.chevronDoubleLeft))
-const prevIcon = computed(() => props.prevIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronRight : appConfig.ui.icons.chevronLeft))
-const nextIcon = computed(() => props.nextIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronLeft : appConfig.ui.icons.chevronRight))
-const lastIcon = computed(() => props.lastIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronDoubleLeft : appConfig.ui.icons.chevronDoubleRight))
+const firstIcon = computed(() => props.firstIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronDoubleRight : appConfig.rimelightWebFramework.icons.chevronDoubleLeft))
+const prevIcon = computed(() => props.prevIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronRight : appConfig.rimelightWebFramework.icons.chevronLeft))
+const nextIcon = computed(() => props.nextIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronLeft : appConfig.rimelightWebFramework.icons.chevronRight))
+const lastIcon = computed(() => props.lastIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronDoubleLeft : appConfig.rimelightWebFramework.icons.chevronDoubleRight))
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.pagination || {}) })())
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.pagination || {}) })())
 </script>
 
 <template>
@@ -169,7 +169,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.pagination |
 
         <PaginationEllipsis v-else :key="item.type" :index="index" as-child :class="ui.ellipsis({ class: props.ui?.ellipsis })">
           <slot name="ellipsis">
-            <UButton :color="color" :variant="variant" :size="size" :icon="ellipsisIcon || appConfig.ui.icons.ellipsis" />
+            <UButton :color="color" :variant="variant" :size="size" :icon="ellipsisIcon || appConfig.rimelightWebFramework.icons.ellipsis" />
           </slot>
         </PaginationEllipsis>
       </template>

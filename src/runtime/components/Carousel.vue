@@ -9,7 +9,7 @@ import type { AutoHeightOptionsType } from 'embla-carousel-auto-height'
 import type { ClassNamesOptionsType } from 'embla-carousel-class-names'
 import type { FadeOptionsType } from 'embla-carousel-fade'
 import type { WheelGesturesPluginOptions } from 'embla-carousel-wheel-gestures'
-import theme from '#build/ui/carousel'
+import theme from '#build/rimelightWebFramework/carousel'
 import type { ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -36,7 +36,7 @@ export interface CarouselProps<T extends CarouselItem = CarouselItem> extends Om
   prev?: ButtonProps
   /**
    * The icon displayed in the prev button.
-   * @defaultValue appConfig.ui.icons.arrowLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.arrowLeft
    * @IconifyIcon
    */
   prevIcon?: string
@@ -47,7 +47,7 @@ export interface CarouselProps<T extends CarouselItem = CarouselItem> extends Om
   next?: ButtonProps
   /**
    * The icon displayed in the next button.
-   * @defaultValue appConfig.ui.icons.arrowRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.arrowRight
    * @IconifyIcon
    */
   nextIcon?: string
@@ -161,10 +161,10 @@ const appConfig = useAppConfig() as Carousel['AppConfig']
 
 const rootProps = useForwardProps(reactivePick(props, 'active', 'align', 'breakpoints', 'containScroll', 'dragFree', 'dragThreshold', 'duration', 'inViewThreshold', 'loop', 'skipSnaps', 'slidesToScroll', 'startIndex', 'watchDrag', 'watchResize', 'watchSlides', 'watchFocus'))
 
-const prevIcon = computed(() => props.prevIcon || (dir.value === 'rtl' ? appConfig.ui.icons.arrowRight : appConfig.ui.icons.arrowLeft))
-const nextIcon = computed(() => props.nextIcon || (dir.value === 'rtl' ? appConfig.ui.icons.arrowLeft : appConfig.ui.icons.arrowRight))
+const prevIcon = computed(() => props.prevIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.arrowRight : appConfig.rimelightWebFramework.icons.arrowLeft))
+const nextIcon = computed(() => props.nextIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.arrowLeft : appConfig.rimelightWebFramework.icons.arrowRight))
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.carousel || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.carousel || {}) })({
   orientation: props.orientation
 }))
 

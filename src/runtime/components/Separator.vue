@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SeparatorProps as _SeparatorProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/separator'
+import theme from '#build/rimelightWebFramework/separator'
 import type { AvatarProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -66,7 +66,7 @@ const appConfig = useAppConfig() as Separator['AppConfig']
 
 const rootProps = useForwardProps(reactivePick(props, 'as', 'decorative', 'orientation'))
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.separator || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.separator || {}) })({
   color: props.color,
   orientation: props.orientation,
   size: props.size,

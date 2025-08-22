@@ -4,16 +4,16 @@ import { resolvePathSync } from 'mlly'
 import MagicString from 'magic-string'
 
 import { runtimeDir } from '../unplugin'
-import type { NuxtUIOptions } from '../unplugin'
+import type { RimelightWebFrameworkOptions } from '../unplugin'
 
 /**
  * This plugin normalises Nuxt environment (#imports) and `import.meta.client` within the Nuxt UI components.
  */
-export default function NuxtEnvironmentPlugin(options: NuxtUIOptions) {
+export default function NuxtEnvironmentPlugin(options: RimelightWebFrameworkOptions) {
   const stubPath = resolvePathSync(options.inertia ? '../runtime/inertia/stubs' : '../runtime/vue/stubs', { extensions: ['.ts', '.mjs', '.js'], url: import.meta.url })
 
   return {
-    name: 'nuxt:ui',
+    name: 'nuxt:rimelightWebFramework',
     enforce: 'pre',
     resolveId(id) {
       // this is implemented here rather than in a vite `config` hook for cross-builder support

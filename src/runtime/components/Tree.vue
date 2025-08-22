@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { TreeRootProps, TreeRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/tree'
+import theme from '#build/rimelightWebFramework/tree'
 import type { DynamicSlots, GetItemKeys, GetModelValue, GetModelValueEmits, NestedItem, ComponentConfig } from '../types/utils'
 
 type Tree = ComponentConfig<typeof theme, AppConfig, 'tree'>
@@ -55,19 +55,19 @@ export interface TreeProps<T extends TreeItem[] = TreeItem[], VK extends GetItem
   labelKey?: keyof NestedItem<T>
   /**
    * The icon displayed on the right side of a parent node.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
   /**
    * The icon displayed when a parent node is expanded.
-   * @defaultValue appConfig.ui.icons.folderOpen
+   * @defaultValue appConfig.rimelightWebFramework.icons.folderOpen
    * @IconifyIcon
    */
   expandedIcon?: string
   /**
    * The icon displayed when a parent node is collapsed.
-   * @defaultValue appConfig.ui.icons.folder
+   * @defaultValue appConfig.rimelightWebFramework.icons.folder
    * @IconifyIcon
    */
   collapsedIcon?: string
@@ -123,7 +123,7 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', '
 
 const [DefineTreeTemplate, ReuseTreeTemplate] = createReusableTemplate<{ items?: TreeItem[], level: number }, TreeSlots<T>>()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.tree || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.tree || {}) })({
   color: props.color,
   size: props.size
 }))
@@ -175,7 +175,7 @@ const defaultExpanded = computed(() =>
                 />
                 <UIcon
                   v-else-if="item.children?.length"
-                  :name="isExpanded ? (expandedIcon ?? appConfig.ui.icons.folderOpen) : (collapsedIcon ?? appConfig.ui.icons.folder)"
+                  :name="isExpanded ? (expandedIcon ?? appConfig.rimelightWebFramework.icons.folderOpen) : (collapsedIcon ?? appConfig.rimelightWebFramework.icons.folder)"
                   :class="ui.linkLeadingIcon({ class: [props.ui?.linkLeadingIcon, item.ui?.linkLeadingIcon] })"
                 />
               </slot>
@@ -189,7 +189,7 @@ const defaultExpanded = computed(() =>
               <span v-if="item.trailingIcon || item.children?.length || !!slots[(item.slot ? `${item.slot}-trailing`: 'item-trailing') as keyof TreeSlots<T>]" :class="ui.linkTrailing({ class: [props.ui?.linkTrailing, item.ui?.linkTrailing] })">
                 <slot :name="((item.slot ? `${item.slot}-trailing`: 'item-trailing') as keyof TreeSlots<T>)" v-bind="{ item, index, level, expanded: isExpanded, selected: isSelected }" :item="(item as Extract<NestedItem<T>, { slot: string; }>)">
                   <UIcon v-if="item.trailingIcon" :name="item.trailingIcon" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon] })" />
-                  <UIcon v-else-if="item.children?.length" :name="trailingIcon ?? appConfig.ui.icons.chevronDown" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon] })" />
+                  <UIcon v-else-if="item.children?.length" :name="trailingIcon ?? appConfig.rimelightWebFramework.icons.chevronDown" :class="ui.linkTrailingIcon({ class: [props.ui?.linkTrailingIcon, item.ui?.linkTrailingIcon] })" />
                 </slot>
               </span>
             </slot>

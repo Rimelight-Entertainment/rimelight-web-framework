@@ -4,7 +4,7 @@ import type { ListboxRootProps, ListboxRootEmits } from 'reka-ui'
 import type { FuseResult } from 'fuse.js'
 import type { AppConfig } from '@nuxt/schema'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
-import theme from '#build/ui/command-palette'
+import theme from '#build/rimelightWebFramework/command-palette'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps, ButtonProps, ChipProps, KbdProps, InputProps, LinkProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
@@ -65,19 +65,19 @@ export interface CommandPaletteProps<G extends CommandPaletteGroup<T> = CommandP
   as?: any
   /**
    * The icon displayed in the input.
-   * @defaultValue appConfig.ui.icons.search
+   * @defaultValue appConfig.rimelightWebFramework.icons.search
    * @IconifyIcon
    */
   icon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   selectedIcon?: string
   /**
    * The icon displayed when an item has children.
-   * @defaultValue appConfig.ui.icons.chevronRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronRight
    * @IconifyIcon
    */
   trailingIcon?: string
@@ -100,7 +100,7 @@ export interface CommandPaletteProps<G extends CommandPaletteGroup<T> = CommandP
   close?: boolean | Partial<ButtonProps>
   /**
    * The icon displayed in the close button.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   closeIcon?: string
@@ -112,7 +112,7 @@ export interface CommandPaletteProps<G extends CommandPaletteGroup<T> = CommandP
   back?: boolean | ButtonProps
   /**
    * The icon displayed in the back button.
-   * @defaultValue appConfig.ui.icons.arrowLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.arrowLeft
    * @IconifyIcon
    */
   backIcon?: string
@@ -197,7 +197,7 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'mu
 const inputProps = useForwardProps(reactivePick(props, 'loading', 'loadingIcon'))
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.commandPalette || {}) })())
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.commandPalette || {}) })())
 
 const fuse = computed(() => defu({}, props.fuse, {
   fuseOptions: {
@@ -217,7 +217,7 @@ const groups = computed(() => history.value?.length ? [history.value[history.val
 
 const items = computed(() => groups.value?.filter((group) => {
   if (!group.id) {
-    console.warn(`[@nuxt/ui] CommandPalette group is missing an \`id\` property`)
+    console.warn(`[@rimelight/rimelight-web-framework] CommandPalette group is missing an \`id\` property`)
     return false
   }
   if (group.ignoreFilter) {
@@ -336,14 +336,14 @@ function onSelect(e: Event, item: T) {
         variant="none"
         :autofocus="autofocus"
         v-bind="inputProps"
-        :icon="icon || appConfig.ui.icons.search"
+        :icon="icon || appConfig.rimelightWebFramework.icons.search"
         :class="ui.input({ class: props.ui?.input })"
         @keydown.backspace="onBackspace"
       >
         <template v-if="history?.length && (back || !!slots.back)" #leading>
           <slot name="back" :ui="ui">
             <UButton
-              :icon="backIcon || appConfig.ui.icons.arrowLeft"
+              :icon="backIcon || appConfig.rimelightWebFramework.icons.arrowLeft"
               color="neutral"
               variant="link"
               :aria-label="t('commandPalette.back')"
@@ -358,7 +358,7 @@ function onSelect(e: Event, item: T) {
           <slot name="close" :ui="ui">
             <UButton
               v-if="close"
-              :icon="closeIcon || appConfig.ui.icons.close"
+              :icon="closeIcon || appConfig.rimelightWebFramework.icons.close"
               color="neutral"
               variant="ghost"
               :aria-label="t('commandPalette.close')"
@@ -390,7 +390,7 @@ function onSelect(e: Event, item: T) {
               <ULinkBase v-bind="slotProps" :class="ui.item({ class: [props.ui?.item, item.ui?.item, item.class], active: active || item.active })">
                 <slot :name="((item.slot || group.slot || 'item') as keyof CommandPaletteSlots<G, T>)" :item="(item as any)" :index="index">
                   <slot :name="((item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`) as keyof CommandPaletteSlots<G, T>)" :item="(item as any)" :index="index">
-                    <UIcon v-if="item.loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.itemLeadingIcon({ class: [props.ui?.itemLeadingIcon, item.ui?.itemLeadingIcon], loading: true })" />
+                    <UIcon v-if="item.loading" :name="loadingIcon || appConfig.rimelightWebFramework.icons.loading" :class="ui.itemLeadingIcon({ class: [props.ui?.itemLeadingIcon, item.ui?.itemLeadingIcon], loading: true })" />
                     <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ class: [props.ui?.itemLeadingIcon, item.ui?.itemLeadingIcon], active: active || item.active })" />
                     <UAvatar v-else-if="item.avatar" :size="((item.ui?.itemLeadingAvatarSize || props.ui?.itemLeadingAvatarSize || ui.itemLeadingAvatarSize()) as AvatarProps['size'])" v-bind="item.avatar" :class="ui.itemLeadingAvatar({ class: [props.ui?.itemLeadingAvatar, item.ui?.itemLeadingAvatar], active: active || item.active })" />
                     <UChip
@@ -417,7 +417,7 @@ function onSelect(e: Event, item: T) {
                     <slot :name="((item.slot ? `${item.slot}-trailing` : group.slot ? `${group.slot}-trailing` : `item-trailing`) as keyof CommandPaletteSlots<G, T>)" :item="(item as any)" :index="index">
                       <UIcon
                         v-if="item.children && item.children.length > 0"
-                        :name="trailingIcon || appConfig.ui.icons.chevronRight"
+                        :name="trailingIcon || appConfig.rimelightWebFramework.icons.chevronRight"
                         :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, item.ui?.itemTrailingIcon] })"
                       />
 
@@ -429,7 +429,7 @@ function onSelect(e: Event, item: T) {
                     </slot>
 
                     <ListboxItemIndicator v-if="!item.children?.length" as-child>
-                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, item.ui?.itemTrailingIcon] })" />
+                      <UIcon :name="selectedIcon || appConfig.rimelightWebFramework.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, item.ui?.itemTrailingIcon] })" />
                     </ListboxItemIndicator>
                   </span>
                 </slot>

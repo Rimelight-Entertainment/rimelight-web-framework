@@ -2,7 +2,7 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { AppConfig } from '@nuxt/schema'
 import type { RouterLinkProps, RouteLocationRaw } from 'vue-router'
-import theme from '#build/ui/link'
+import theme from '#build/rimelightWebFramework/link'
 import type { ComponentConfig } from '../types/utils'
 
 type Link = ComponentConfig<typeof theme, AppConfig, 'link'>
@@ -118,11 +118,11 @@ const ui = computed(() => tv({
   ...defu({
     variants: {
       active: {
-        true: mergeClasses(appConfig.ui?.link?.variants?.active?.true, props.activeClass),
-        false: mergeClasses(appConfig.ui?.link?.variants?.active?.false, props.inactiveClass)
+        true: mergeClasses(appConfig.rimelightWebFramework?.link?.variants?.active?.true, props.activeClass),
+        false: mergeClasses(appConfig.rimelightWebFramework?.link?.variants?.active?.false, props.inactiveClass)
       }
     }
-  }, appConfig.ui?.link || {})
+  }, appConfig.rimelightWebFramework?.link || {})
 }))
 
 const to = computed(() => props.to ?? props.href)

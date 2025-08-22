@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-48">
-      <UInputNumber />
+      <RLInputNumber />
     </div>
     <div class="flex items-center gap-2">
-      <UInputNumber
+      <RLInputNumber
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -13,7 +13,7 @@
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputNumber
+      <RLInputNumber
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -23,7 +23,7 @@
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputNumber
+      <RLInputNumber
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -34,11 +34,11 @@
       />
     </div>
     <div class="flex flex-col gap-4 w-48">
-      <UInputNumber placeholder="Disabled" disabled />
-      <UInputNumber placeholder="Required" required />
+      <RLInputNumber placeholder="Disabled" disabled />
+      <RLInputNumber placeholder="Required" required />
     </div>
     <div class="flex items-center gap-4">
-      <UInputNumber
+      <RLInputNumber
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -47,7 +47,7 @@
       />
     </div>
     <div class="flex items-center gap-4">
-      <UInputNumber
+      <RLInputNumber
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import theme from '#build/ui/input-number'
+import theme from '#build/rimelightWebFramework/input-number'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>

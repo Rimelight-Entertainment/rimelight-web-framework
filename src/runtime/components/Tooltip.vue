@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TooltipRootProps, TooltipRootEmits, TooltipContentProps, TooltipContentEmits, TooltipArrowProps, TooltipTriggerProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/tooltip'
+import theme from '#build/rimelightWebFramework/tooltip'
 import type { KbdProps } from '../types'
 import type { EmitsToProps, ComponentConfig } from '../types/utils'
 
@@ -69,7 +69,7 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 const arrowProps = toRef(() => props.arrow as TooltipArrowProps)
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.tooltip || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.tooltip || {}) })({
   side: contentProps.value.side
 }))
 </script>

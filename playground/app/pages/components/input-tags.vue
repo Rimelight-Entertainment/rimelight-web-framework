@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import theme from '#build/ui/input-tags'
+import theme from '#build/rimelightWebFramework/input-tags'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
@@ -11,14 +11,14 @@ const tags = ref(['Vue', 'Nuxt'])
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-48">
-      <UInputTags
+      <RLInputTags
         v-model="tags"
         placeholder="Enter tags..."
         autofocus
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputTags
+      <RLInputTags
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -27,7 +27,7 @@ const tags = ref(['Vue', 'Nuxt'])
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputTags
+      <RLInputTags
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -37,7 +37,7 @@ const tags = ref(['Vue', 'Nuxt'])
       />
     </div>
     <div class="flex items-center gap-2">
-      <UInputTags
+      <RLInputTags
         v-for="variant in variants"
         :key="variant"
         :placeholder="upperFirst(variant)"
@@ -48,13 +48,13 @@ const tags = ref(['Vue', 'Nuxt'])
       />
     </div>
     <div class="flex flex-col gap-4 w-48">
-      <UInputTags placeholder="Disabled" disabled />
-      <UInputTags placeholder="Required" required />
-      <UInputTags loading placeholder="Loading..." />
-      <UInputTags loading trailing placeholder="Loading..." />
+      <RLInputTags placeholder="Disabled" disabled />
+      <RLInputTags placeholder="Required" required />
+      <RLInputTags loading placeholder="Loading..." />
+      <RLInputTags loading trailing placeholder="Loading..." />
     </div>
     <div class="flex items-center gap-4">
-      <UInputTags
+      <RLInputTags
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -63,7 +63,7 @@ const tags = ref(['Vue', 'Nuxt'])
       />
     </div>
     <div class="flex items-center gap-4">
-      <UInputTags
+      <RLInputTags
         v-for="size in sizes"
         :key="size"
         icon="i-lucide-search"
@@ -73,7 +73,7 @@ const tags = ref(['Vue', 'Nuxt'])
       />
     </div>
     <div class="flex items-center gap-4">
-      <UInputTags
+      <RLInputTags
         v-for="size in sizes"
         :key="size"
         icon="i-lucide-search"

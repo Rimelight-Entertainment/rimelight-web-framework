@@ -153,7 +153,7 @@ defineShortcuts({
 
 <template>
   <DefineTemplate>
-    <UCommandPalette
+    <RLCommandPalette
       v-model="selected"
       v-model:search-term="searchTerm"
       :loading="status === 'pending'"
@@ -171,53 +171,53 @@ defineShortcuts({
         <div class="flex items-center justify-between gap-2">
           <UIcon name="i-simple-icons-nuxtdotjs" class="size-5 text-dimmed ml-1" />
           <div class="flex items-center gap-1">
-            <UButton color="neutral" variant="ghost" label="Open Command" class="text-dimmed" size="xs">
+            <RLButton color="neutral" variant="ghost" label="Open Command" class="text-dimmed" size="xs">
               <template #trailing>
-                <UKbd value="enter" />
+                <RLKbd value="enter" />
               </template>
-            </UButton>
-            <USeparator orientation="vertical" class="h-4" />
-            <UButton color="neutral" variant="ghost" label="Actions" class="text-dimmed" size="xs">
+            </RLButton>
+            <RLSeparator orientation="vertical" class="h-4" />
+            <RLButton color="neutral" variant="ghost" label="Actions" class="text-dimmed" size="xs">
               <template #trailing>
-                <UKbd value="meta" />
-                <UKbd value="k" />
+                <RLKbd value="meta" />
+                <RLKbd value="k" />
               </template>
-            </UButton>
+            </RLButton>
           </div>
         </div>
       </template>
-    </UCommandPalette>
+    </RLCommandPalette>
   </DefineTemplate>
 
   <div class="flex-1 flex flex-col gap-12 w-full max-w-lg">
     <div class="flex items-center justify-between gap-2 mt-[58px]">
-      <UModal v-model:open="open">
-        <UButton label="Open modal" color="neutral" variant="outline" />
+      <RLModal v-model:open="open">
+        <RLButton label="Open modal" color="neutral" variant="outline" />
 
         <template #content>
           <ReuseTemplate :close="true" @update:open="open = $event" />
         </template>
-      </UModal>
+      </RLModal>
 
-      <UDrawer should-scale-background>
-        <UButton label="Open drawer" color="neutral" variant="outline" />
+      <RLDrawer should-scale-background>
+        <RLButton label="Open drawer" color="neutral" variant="outline" />
 
         <template #content>
           <ReuseTemplate class="border-t border-default mt-4" />
         </template>
-      </UDrawer>
+      </RLDrawer>
 
-      <UPopover :content="{ side: 'right', align: 'start' }">
-        <UButton label="Select label (popover)" color="neutral" variant="outline" />
+      <RLPopover :content="{ side: 'right', align: 'start' }">
+        <RLButton label="Select label (popover)" color="neutral" variant="outline" />
 
         <template #content>
-          <UCommandPalette v-model="label" placeholder="Search labels..." :groups="[{ id: 'labels', items: labels }]" :ui="{ input: '[&>input]:h-8 [&>input]:text-sm' }" />
+          <RLCommandPalette v-model="label" placeholder="Search labels..." :groups="[{ id: 'labels', items: labels }]" :ui="{ input: '[&>input]:h-8 [&>input]:text-sm' }" />
         </template>
-      </UPopover>
+      </RLPopover>
     </div>
 
-    <UCard :ui="{ body: '!p-0' }">
+    <RLCard :ui="{ body: '!p-0' }">
       <ReuseTemplate />
-    </UCard>
+    </RLCard>
   </div>
 </template>

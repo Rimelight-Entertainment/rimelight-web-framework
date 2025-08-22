@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CheckboxRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/checkbox'
+import theme from '#build/rimelightWebFramework/checkbox'
 import type { ComponentConfig } from '../types/utils'
 
 type Checkbox = ComponentConfig<typeof theme, AppConfig, 'checkbox'>
@@ -33,13 +33,13 @@ export interface CheckboxProps extends Pick<CheckboxRootProps, 'disabled' | 'req
   indicator?: Checkbox['variants']['indicator']
   /**
    * The icon displayed when checked.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   icon?: string
   /**
    * The icon displayed when the checkbox is indeterminate.
-   * @defaultValue appConfig.ui.icons.minus
+   * @defaultValue appConfig.rimelightWebFramework.icons.minus
    * @IconifyIcon
    */
   indeterminateIcon?: string
@@ -81,7 +81,7 @@ const rootProps = useForwardProps(reactivePick(props, 'required', 'value', 'defa
 const { id: _id, emitFormChange, emitFormInput, size, color, name, disabled, ariaAttrs } = useFormField<CheckboxProps>(props)
 const id = _id.value ?? useId()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.checkbox || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.checkbox || {}) })({
   size: size.value,
   color: color.value,
   variant: props.variant,
@@ -99,7 +99,6 @@ function onUpdate(value: any) {
 }
 </script>
 
-<!-- eslint-disable vue/no-template-shadow -->
 <template>
   <Primitive :as="(!variant || variant === 'list') ? as : Label" :class="ui.root({ class: [props.ui?.root, props.class] })">
     <div :class="ui.container({ class: props.ui?.container })">
@@ -114,8 +113,8 @@ function onUpdate(value: any) {
       >
         <template #default="{ modelValue }">
           <CheckboxIndicator :class="ui.indicator({ class: props.ui?.indicator })">
-            <UIcon v-if="modelValue === 'indeterminate'" :name="indeterminateIcon || appConfig.ui.icons.minus" :class="ui.icon({ class: props.ui?.icon })" />
-            <UIcon v-else :name="icon || appConfig.ui.icons.check" :class="ui.icon({ class: props.ui?.icon })" />
+            <UIcon v-if="modelValue === 'indeterminate'" :name="indeterminateIcon || appConfig.rimelightWebFramework.icons.minus" :class="ui.icon({ class: props.ui?.icon })" />
+            <UIcon v-else :name="icon || appConfig.rimelightWebFramework.icons.check" :class="ui.icon({ class: props.ui?.icon })" />
           </CheckboxIndicator>
         </template>
       </CheckboxRoot>

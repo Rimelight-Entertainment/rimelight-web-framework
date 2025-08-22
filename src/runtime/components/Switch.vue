@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SwitchRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/switch'
+import theme from '#build/rimelightWebFramework/switch'
 import type { ComponentConfig } from '../types/utils'
 
 type Switch = ComponentConfig<typeof theme, AppConfig, 'switch'>
@@ -24,7 +24,7 @@ export interface SwitchProps extends Pick<SwitchRootProps, 'disabled' | 'id' | '
   loading?: boolean
   /**
    * The icon when the `loading` prop is `true`.
-   * @defaultValue appConfig.ui.icons.loading
+   * @defaultValue appConfig.rimelightWebFramework.icons.loading
    * @IconifyIcon
    */
   loadingIcon?: string
@@ -78,7 +78,7 @@ const rootProps = useForwardProps(reactivePick(props, 'required', 'value', 'defa
 const { id: _id, emitFormChange, emitFormInput, size, color, name, disabled, ariaAttrs } = useFormField<SwitchProps>(props)
 const id = _id.value ?? useId()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.switch || {}) })({
   size: size.value,
   color: color.value,
   required: props.required,
@@ -108,7 +108,7 @@ function onUpdate(value: any) {
         @update:model-value="onUpdate"
       >
         <SwitchThumb :class="ui.thumb({ class: props.ui?.thumb })">
-          <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ class: props.ui?.icon, checked: true, unchecked: true })" />
+          <UIcon v-if="loading" :name="loadingIcon || appConfig.rimelightWebFramework.icons.loading" :class="ui.icon({ class: props.ui?.icon, checked: true, unchecked: true })" />
           <template v-else>
             <UIcon v-if="checkedIcon" :name="checkedIcon" :class="ui.icon({ class: props.ui?.icon, checked: true })" />
             <UIcon v-if="uncheckedIcon" :name="uncheckedIcon" :class="ui.icon({ class: props.ui?.icon, unchecked: true })" />

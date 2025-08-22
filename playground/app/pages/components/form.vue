@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import * as z from 'zod'
-import type { FormSubmitEvent } from '@nuxt/ui'
-import FormExampleElements from '../../../../docs/app/components/content/examples/form/FormExampleElements.vue'
-import FormExampleNestedList from '../../../../docs/app/components/content/examples/form/FormExampleNestedList.vue'
-import FormExampleNested from '../../../../docs/app/components/content/examples/form/FormExampleNested.vue'
+import type { FormSubmitEvent } from '@rimelight/rimelight-web-framework'
 
 const schema = z.object({
   email: z.string().email(),
@@ -26,40 +23,40 @@ const disabled = ref(false)
 <template>
   <div class="flex flex-col gap-8">
     <div class="flex gap-4">
-      <UForm
+      <RLForm
         :state="state"
         :schema="schema"
         class="gap-4 flex flex-col w-60"
         @submit="onSubmit"
       >
-        <UFormField label="Email" name="email">
-          <UInput v-model="state.email" placeholder="john@lennon.com" />
-        </UFormField>
+        <RLFormField label="Email" name="email">
+          <RLInput v-model="state.email" placeholder="john@lennon.com" />
+        </RLFormField>
 
-        <UFormField label="Password" name="password">
-          <UInput v-model="state.password" type="password" />
-        </UFormField>
+        <RLFormField label="Password" name="password">
+          <RLInput v-model="state.password" type="password" />
+        </RLFormField>
 
-        <UFormField name="tos">
-          <UCheckbox v-model="state.tos" label="I accept the terms and conditions" />
-        </UFormField>
+        <RLFormField name="tos">
+          <RLCheckbox v-model="state.tos" label="I accept the terms and conditions" />
+        </RLFormField>
 
         <div>
-          <UButton type="submit">
+          <RLButton type="submit">
             Submit
-          </UButton>
+          </RLButton>
         </div>
-      </UForm>
+      </RLForm>
       <FormExampleNested />
       <FormExampleNestedList />
     </div>
 
     <div class="border border-default rounded-lg">
       <div class="py-2 px-4 flex gap-4 items-center">
-        <UFormField label="Validate on" class="flex items-center gap-2">
-          <USelectMenu v-model="validateOn" :items="['input', 'change', 'blur']" multiple class="w-48" />
-        </UFormField>
-        <UCheckbox v-model="disabled" label="Disabled" />
+        <RLFormField label="Validate on" class="flex items-center gap-2">
+          <RLSelectMenu v-model="validateOn" :items="['input', 'change', 'blur']" multiple class="w-48" />
+        </RLFormField>
+        <RLCheckbox v-model="disabled" label="Disabled" />
       </div>
 
       <FormExampleElements :validate-on="validateOn" :disabled="disabled" class="border-t border-default p-4" />

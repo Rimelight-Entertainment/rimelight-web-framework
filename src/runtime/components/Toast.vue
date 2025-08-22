@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ToastRootProps, ToastRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/toast'
+import theme from '#build/rimelightWebFramework/toast'
 import type { AvatarProps, ButtonProps, ProgressProps } from '../types'
 import type { StringOrVNode, ComponentConfig } from '../types/utils'
 
@@ -37,7 +37,7 @@ export interface ToastProps extends Pick<ToastRootProps, 'defaultOpen' | 'open' 
   close?: boolean | Partial<ButtonProps>
   /**
    * The icon displayed in the close button.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   closeIcon?: string
@@ -94,7 +94,7 @@ const appConfig = useAppConfig() as Toast['AppConfig']
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'open', 'duration', 'type'), emits)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.toast || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.toast || {}) })({
   color: props.color,
   orientation: props.orientation,
   title: !!props.title || !!slots.title
@@ -174,7 +174,7 @@ defineExpose({
         <slot name="close" :ui="ui">
           <UButton
             v-if="close"
-            :icon="closeIcon || appConfig.ui.icons.close"
+            :icon="closeIcon || appConfig.rimelightWebFramework.icons.close"
             color="neutral"
             variant="link"
             :aria-label="t('toast.close')"

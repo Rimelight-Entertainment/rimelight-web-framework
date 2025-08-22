@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { RadioGroupRootProps, RadioGroupRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/radio-group'
+import theme from '#build/rimelightWebFramework/radio-group'
 import type { AcceptableValue, ComponentConfig } from '../types/utils'
 
 type RadioGroup = ComponentConfig<typeof theme, AppConfig, 'radioGroup'>
@@ -106,7 +106,7 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', '
 const { emitFormChange, emitFormInput, color, name, size, id: _id, disabled, ariaAttrs } = useFormField<RadioGroupProps<T>>(props, { bind: false })
 const id = _id.value ?? useId()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.radioGroup || {}) })({
   size: size.value,
   color: color.value,
   disabled: disabled.value,

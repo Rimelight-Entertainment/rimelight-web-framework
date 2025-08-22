@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { DropdownMenuContentProps as RekaDropdownMenuContentProps, DropdownMenuContentEmits as RekaDropdownMenuContentEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import type theme from '#build/ui/dropdown-menu'
+import type theme from '#build/rimelightWebFramework/dropdown-menu'
 import type { KbdProps, AvatarProps, DropdownMenuItem, DropdownMenuSlots, DynamicSlots, MergeTypes } from '../types'
 import type { ArrayOrNested, NestedItem, ComponentConfig } from '../types/utils'
 
@@ -71,7 +71,7 @@ const proxySlots = omit(slots, ['default'])
 
 const [DefineItemTemplate, ReuseItemTemplate] = createReusableTemplate<{ item: DropdownMenuItem, active?: boolean, index: number }>()
 
-const childrenIcon = computed(() => dir.value === 'rtl' ? appConfig.ui.icons.chevronLeft : appConfig.ui.icons.chevronRight)
+const childrenIcon = computed(() => dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronLeft : appConfig.rimelightWebFramework.icons.chevronRight)
 const groups = computed<DropdownMenuItem[][]>(() =>
   props.items?.length
     ? isArrayOfArray(props.items)
@@ -85,7 +85,7 @@ const groups = computed<DropdownMenuItem[][]>(() =>
   <DefineItemTemplate v-slot="{ item, active, index }">
     <slot :name="((item.slot || 'item') as keyof DropdownMenuContentSlots<T>)" :item="(item as Extract<NestedItem<T>, { slot: string; }>)" :index="index">
       <slot :name="((item.slot ? `${item.slot}-leading`: 'item-leading') as keyof DropdownMenuContentSlots<T>)" :item="(item as Extract<NestedItem<T>, { slot: string; }>)" :active="active" :index="index">
-        <UIcon v-if="item.loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.itemLeadingIcon({ class: [uiOverride?.itemLeadingIcon, item.ui?.itemLeadingIcon], color: item?.color, loading: true })" />
+        <UIcon v-if="item.loading" :name="loadingIcon || appConfig.rimelightWebFramework.icons.loading" :class="ui.itemLeadingIcon({ class: [uiOverride?.itemLeadingIcon, item.ui?.itemLeadingIcon], color: item?.color, loading: true })" />
         <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ class: [uiOverride?.itemLeadingIcon, item.ui?.itemLeadingIcon], color: item?.color, active })" />
         <UAvatar v-else-if="item.avatar" :size="((item.ui?.itemLeadingAvatarSize || uiOverride?.itemLeadingAvatarSize || ui.itemLeadingAvatarSize()) as AvatarProps['size'])" v-bind="item.avatar" :class="ui.itemLeadingAvatar({ class: [uiOverride?.itemLeadingAvatar, item.ui?.itemLeadingAvatar], active })" />
       </slot>
@@ -95,7 +95,7 @@ const groups = computed<DropdownMenuItem[][]>(() =>
           {{ get(item, props.labelKey as string) }}
         </slot>
 
-        <UIcon v-if="item.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.ui.icons.external" :class="ui.itemLabelExternalIcon({ class: [uiOverride?.itemLabelExternalIcon, item.ui?.itemLabelExternalIcon], color: item?.color, active })" />
+        <UIcon v-if="item.target === '_blank' && externalIcon !== false" :name="typeof externalIcon === 'string' ? externalIcon : appConfig.rimelightWebFramework.icons.external" :class="ui.itemLabelExternalIcon({ class: [uiOverride?.itemLabelExternalIcon, item.ui?.itemLabelExternalIcon], color: item?.color, active })" />
       </span>
 
       <span :class="ui.itemTrailing({ class: [uiOverride?.itemTrailing, item.ui?.itemTrailing] })">
@@ -107,7 +107,7 @@ const groups = computed<DropdownMenuItem[][]>(() =>
         </slot>
 
         <DropdownMenu.ItemIndicator as-child>
-          <UIcon :name="checkedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon({ class: [uiOverride?.itemTrailingIcon, item.ui?.itemTrailingIcon], color: item?.color })" />
+          <UIcon :name="checkedIcon || appConfig.rimelightWebFramework.icons.check" :class="ui.itemTrailingIcon({ class: [uiOverride?.itemTrailingIcon, item.ui?.itemTrailingIcon], color: item?.color })" />
         </DropdownMenu.ItemIndicator>
       </span>
     </slot>

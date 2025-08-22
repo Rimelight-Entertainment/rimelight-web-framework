@@ -1,13 +1,13 @@
 {
-  "name": "@nuxt/ui",
-  "description": "A UI Library for Modern Web Apps, powered by Vue & Tailwind CSS.",
-  "version": "3.3.2",
+  "name": "@rimelight/rimelight-web-framework",
+  "description": "An opinionated component library used internally at Rimelight Entertainment, powered by Vue, Nuxt, & Tailwind CSS.",
+  "version": "0.1.9",
   "packageManager": "pnpm@10.14.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nuxt/ui.git"
+    "url": "git+https://github.com/Rimelight-Entertainment/RimelightWebFramework.git"
   },
-  "homepage": "https://ui.nuxt.com",
+  "homepage": "https://rimelight.com",
   "type": "module",
   "license": "MIT",
   "exports": {
@@ -96,19 +96,13 @@
   "scripts": {
     "build": "nuxt-module-build build",
     "prepack": "pnpm build",
-    "dev": "nuxt dev playground --uiDev",
+    "dev": "nuxt dev playground --rimelightWebFrameworkDev",
     "dev:build": "nuxt build playground",
-    "dev:vue": "pnpm --filter playground-vue dev -- --uiDev",
-    "dev:vue:build": "pnpm --filter playground-vue build",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground && nuxt prepare docs && pnpm dev:vue:build",
-    "docs": "nuxt dev docs --uiDev",
-    "docs:build": "nuxt build docs",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "typecheck": "vue-tsc --noEmit && nuxt typecheck playground && nuxt typecheck docs && cd playground-vue && vue-tsc --noEmit",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "vue-tsc --noEmit && nuxt typecheck playground",
     "test": "vitest",
-    "test:vue": "vitest -c vitest.vue.config.ts",
-    "release": "release-it"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
@@ -118,6 +112,7 @@
     "@nuxt/icon": "^1.15.0",
     "@nuxt/kit": "^4.0.3",
     "@nuxt/schema": "^4.0.3",
+    "@rimelight/rimelight-web-framework": "link:../../../AppData/Local/pnpm/global/5/node_modules/@rimelight/rimelight-web-framework",
     "@nuxtjs/color-mode": "^3.5.2",
     "@standard-schema/spec": "^1.0.0",
     "@tailwindcss/postcss": "^4.1.12",
@@ -126,6 +121,7 @@
     "@unhead/vue": "^2.0.14",
     "@vueuse/core": "^13.6.0",
     "@vueuse/integrations": "^13.6.0",
+    "biome": "^0.3.3",
     "colortranslator": "^5.0.0",
     "consola": "^3.4.2",
     "defu": "^6.1.4",
@@ -162,7 +158,6 @@
     "@release-it/conventional-changelog": "^10.0.1",
     "@vue/test-utils": "^2.4.6",
     "embla-carousel": "^8.6.0",
-    "eslint": "^9.33.0",
     "happy-dom": "^18.0.1",
     "nuxt": "^4.0.3",
     "release-it": "^19.0.4",
@@ -204,7 +199,7 @@
     }
   },
   "resolutions": {
-    "@nuxt/ui": "workspace:*",
+    "@rimelight/rimelight-web-framework": "workspace:*",
     "@nuxt/module-builder": "1.0.1",
     "chokidar": "3.6.0",
     "debug": "4.3.7",
@@ -228,19 +223,8 @@
     ]
   },
   "keywords": [
-    "nuxt-ui",
-    "nuxt",
-    "vue3",
-    "tailwindcss",
-    "component library",
-    "vue",
-    "vuejs",
-    "vue.js",
-    "typescript",
-    "vue-components",
-    "ui",
-    "tailwind",
     "framework",
-    "ui-framework"
+    "vue",
+    "nuxt"
   ]
 }

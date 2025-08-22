@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CheckboxGroupRootProps, CheckboxGroupRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/checkbox-group'
+import theme from '#build/rimelightWebFramework/checkbox-group'
 import type { CheckboxProps } from '../types'
 import type { AcceptableValue, ComponentConfig } from '../types/utils'
 
@@ -100,7 +100,7 @@ const proxySlots = omit(slots, ['legend'])
 const { emitFormChange, emitFormInput, color, name, size, id: _id, disabled, ariaAttrs } = useFormField<CheckboxGroupProps<T>>(props, { bind: false })
 const id = _id.value ?? useId()
 
-const ui = computed(() => tv({ extend: theme, ...(appConfig.ui?.checkboxGroup || {}) })({
+const ui = computed(() => tv({ extend: theme, ...(appConfig.rimelightWebFramework?.checkboxGroup || {}) })({
   size: size.value,
   required: props.required,
   orientation: props.orientation,

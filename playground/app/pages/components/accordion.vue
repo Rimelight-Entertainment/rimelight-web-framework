@@ -1,37 +1,37 @@
 <script setup lang="ts">
 const items = [{
   label: 'Getting Started',
-  icon: 'i-lucide-info',
+  icon: 'examples:info',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Installation',
-  icon: 'i-lucide-download',
+  icon: 'examples:mail',
   disabled: true,
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Theming',
-  icon: 'i-lucide-pipette',
+  icon: 'examples:download',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Layouts',
-  icon: 'i-lucide-layout-dashboard',
+  icon: 'examples:download',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Components',
   slot: 'test' as const,
-  icon: 'i-lucide-layers-3',
+  icon: 'examples:download',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Utilities',
   slot: 'custom' as const,
-  icon: 'i-lucide-wrench',
+  icon: 'examples:wrench',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }]
 </script>
 
 <template>
-  <UCard :ui="{ body: 'p-0 sm:p-0' }">
-    <UAccordion :items="items" class="w-96" :ui="{ trigger: 'px-3.5', body: 'px-3.5' }">
+  <RLCard :ui="{ body: 'p-0 sm:p-0' }">
+    <RLAccordion :items="items" class="w-96" :ui="{ trigger: 'px-3.5', body: 'px-3.5' }">
       <template #body="{ item }">
         <p class="text-muted">
           {{ item.content }}
@@ -48,6 +48,6 @@ const items = [{
           Custom: {{ item.content }}
         </p>
       </template>
-    </UAccordion>
-  </UCard>
+    </RLAccordion>
+  </RLCard>
 </template>

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
 import type { UseFileDialogReturn } from '@vueuse/core'
-import theme from '#build/ui/file-upload'
+import theme from '#build/rimelightWebFramework/file-upload'
 import type { ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -17,7 +17,7 @@ export interface FileUploadProps<M extends boolean = false> {
   name?: string
   /**
    * The icon to display.
-   * @defaultValue appConfig.ui.icons.upload
+   * @defaultValue appConfig.rimelightWebFramework.icons.upload
    * @IconifyIcon
    */
   icon?: string
@@ -76,7 +76,7 @@ export interface FileUploadProps<M extends boolean = false> {
   disabled?: boolean
   /**
    * The icon to display for the file.
-   * @defaultValue appConfig.ui.icons.file
+   * @defaultValue appConfig.rimelightWebFramework.icons.file
    * @IconifyIcon
    */
   fileIcon?: string
@@ -88,7 +88,7 @@ export interface FileUploadProps<M extends boolean = false> {
   fileDelete?: boolean | Partial<ButtonProps>
   /**
    * The icon displayed to delete a file.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   fileDeleteIcon?: string
@@ -179,7 +179,7 @@ const position = computed(() => {
   return props.position
 })
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.fileUpload || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.fileUpload || {}) })({
   dropzone: props.dropzone,
   interactive: props.interactive,
   color: props.color,
@@ -274,7 +274,7 @@ defineExpose({
           <div v-for="(file, index) in Array.isArray(modelValue) ? modelValue : [modelValue]" :key="(file as File).name" :class="ui.file({ class: props.ui?.file })">
             <slot name="file" :file="file" :index="index">
               <slot name="file-leading" :file="file" :index="index">
-                <UAvatar :src="createObjectUrl(file)" :icon="fileIcon || appConfig.ui.icons.file" :size="props.size" :class="ui.fileLeadingAvatar({ class: props.ui?.fileLeadingAvatar })" />
+                <UAvatar :src="createObjectUrl(file)" :icon="fileIcon || appConfig.rimelightWebFramework.icons.file" :size="props.size" :class="ui.fileLeadingAvatar({ class: props.ui?.fileLeadingAvatar })" />
               </slot>
 
               <div :class="ui.fileWrapper({ class: props.ui?.fileWrapper })">
@@ -305,7 +305,7 @@ defineExpose({
                     ...typeof fileDelete === 'object' ? fileDelete : undefined
                   }"
                   :aria-label="t('fileUpload.removeFile', { filename: (file as File).name })"
-                  :trailing-icon="fileDeleteIcon || appConfig.ui.icons.close"
+                  :trailing-icon="fileDeleteIcon || appConfig.rimelightWebFramework.icons.close"
                   :class="ui.fileTrailingButton({ class: props.ui?.fileTrailingButton })"
                   @click.stop.prevent="removeFile(index)"
                 />
@@ -336,8 +336,8 @@ defineExpose({
 
         <div v-if="position === 'inside' ? (multiple ? !(modelValue as File[])?.length : !modelValue) : true" :class="ui.wrapper({ class: props.ui?.wrapper })">
           <slot name="leading">
-            <UIcon v-if="variant === 'button'" :name="icon || appConfig.ui.icons.upload" :class="ui.icon({ class: props.ui?.icon })" />
-            <UAvatar v-else :icon="icon || appConfig.ui.icons.upload" :size="props.size" :class="ui.avatar({ class: props.ui?.avatar })" />
+            <UIcon v-if="variant === 'button'" :name="icon || appConfig.rimelightWebFramework.icons.upload" :class="ui.icon({ class: props.ui?.icon })" />
+            <UAvatar v-else :icon="icon || appConfig.rimelightWebFramework.icons.upload" :size="props.size" :class="ui.avatar({ class: props.ui?.avatar })" />
           </slot>
 
           <template v-if="variant !== 'button'">

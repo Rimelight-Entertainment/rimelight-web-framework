@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/skeleton'
+import theme from '#build/rimelightWebFramework/skeleton'
 import type { ComponentConfig } from '../types/utils'
 
 type Skeleton = ComponentConfig<typeof theme, AppConfig, 'skeleton'>
@@ -25,7 +25,7 @@ const props = defineProps<SkeletonProps>()
 
 const appConfig = useAppConfig() as Skeleton['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.skeleton || {}) }))
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.skeleton || {}) }))
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/badge'
+import theme from '#build/rimelightWebFramework/badge'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
@@ -58,7 +58,7 @@ const appConfig = useAppConfig() as Badge['AppConfig']
 const { orientation, size: buttonGroupSize } = useButtonGroup<BadgeProps>(props)
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.badge || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.badge || {}) })({
   color: props.color,
   variant: props.variant,
   size: buttonGroupSize.value || props.size,

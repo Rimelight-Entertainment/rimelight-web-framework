@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/chip'
+import theme from '#build/rimelightWebFramework/chip'
 import type { ComponentConfig } from '../types/utils'
 
 type Chip = ComponentConfig<typeof theme, AppConfig, 'chip'>
@@ -64,7 +64,7 @@ const show = defineModel<boolean>('show', { default: true })
 const { size } = useAvatarGroup(props)
 const appConfig = useAppConfig() as Chip['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.chip || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.chip || {}) })({
   color: props.color,
   size: size.value,
   position: props.position,

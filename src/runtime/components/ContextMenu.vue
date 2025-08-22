@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { ContextMenuRootProps, ContextMenuRootEmits, ContextMenuContentProps, ContextMenuContentEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/context-menu'
+import theme from '#build/rimelightWebFramework/context-menu'
 import type { AvatarProps, KbdProps, LinkProps } from '../types'
 import type { ArrayOrNested, DynamicSlots, MergeTypes, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
 
@@ -45,20 +45,20 @@ export interface ContextMenuProps<T extends ArrayOrNested<ContextMenuItem> = Arr
   items?: T
   /**
    * The icon displayed when an item is checked.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   checkedIcon?: string
   /**
    * The icon displayed when an item is loading.
-   * @defaultValue appConfig.ui.icons.loading
+   * @defaultValue appConfig.rimelightWebFramework.icons.loading
    * @IconifyIcon
    */
   loadingIcon?: string
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
-   * @defaultValue appConfig.ui.icons.external
+   * @defaultValue appConfig.rimelightWebFramework.icons.external
    * @IconifyIcon
    */
   externalIcon?: boolean | string
@@ -122,7 +122,7 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'modal'), emits)
 const contentProps = toRef(() => props.content)
 const proxySlots = omit(slots, ['default'])
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.contextMenu || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.contextMenu || {}) })({
   size: props.size
 }))
 </script>

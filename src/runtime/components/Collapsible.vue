@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CollapsibleRootProps, CollapsibleRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/collapsible'
+import theme from '#build/rimelightWebFramework/collapsible'
 import type { ComponentConfig } from '../types/utils'
 
 type Collapsible = ComponentConfig<typeof theme, AppConfig, 'collapsible'>
@@ -42,7 +42,7 @@ const appConfig = useAppConfig() as Collapsible['AppConfig']
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'open', 'disabled', 'unmountOnHide'), emits)
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.collapsible || {}) })())
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.collapsible || {}) })())
 </script>
 
 <template>

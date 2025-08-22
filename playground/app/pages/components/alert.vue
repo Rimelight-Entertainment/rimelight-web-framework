@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/alert'
+import theme from '#build/rimelightWebFramework/alert'
 
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
 
@@ -62,17 +62,17 @@ const data = {
 <template>
   <div class="flex flex-col gap-4 flex-1 items-center">
     <div class="flex flex-col gap-2 w-96">
-      <UAlert :title="data.title" />
-      <UAlert :title="data.title" :icon="data.icon" />
-      <UAlert :title="data.title" :icon="data.icon" :close="data.close" />
-      <UAlert :title="data.title" :icon="data.icon" :close="data.close" :actions="actions('neutral')" orientation="horizontal" />
-      <UAlert :title="data.title" :icon="data.icon" :close="data.close" :description="data.description" />
-      <UAlert :title="data.title" :avatar="{ src: 'https://github.com/benjamincanac.png' }" :close="data.close" :description="data.description" />
-      <UAlert :title="data.title" :icon="data.icon" description="example with multiple actions." :actions="multipleActions('neutral')" />
+      <RLAlert :title="data.title" />
+      <RLAlert :title="data.title" :icon="data.icon" />
+      <RLAlert :title="data.title" :icon="data.icon" :close="data.close" />
+      <RLAlert :title="data.title" :icon="data.icon" :close="data.close" :actions="actions('neutral')" orientation="horizontal" />
+      <RLAlert :title="data.title" :icon="data.icon" :close="data.close" :description="data.description" />
+      <RLAlert :title="data.title" :avatar="{ src: 'https://github.com/benjamincanac.png' }" :close="data.close" :description="data.description" />
+      <RLAlert :title="data.title" :icon="data.icon" description="example with multiple actions." :actions="multipleActions('neutral')" />
     </div>
 
     <div class="flex items-center gap-2">
-      <UAlert
+      <RLAlert
         v-for="variant in variants"
         :key="variant"
         v-bind="data"
@@ -81,7 +81,7 @@ const data = {
       />
     </div>
     <div class="flex items-center gap-2">
-      <UAlert
+      <RLAlert
         v-for="variant in variants"
         :key="variant"
         v-bind="data"

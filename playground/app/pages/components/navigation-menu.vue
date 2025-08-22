@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
-import theme from '#build/ui/navigation-menu'
+import type { NavigationMenuItem } from '@rimelight/rimelight-web-framework'
+import theme from '#build/rimelightWebFramework/navigation-menu'
 
 const colors = Object.keys(theme.variants.color)
 const variants = Object.keys(theme.variants.variant)
@@ -98,19 +98,19 @@ const items = [
 <template>
   <div class="flex flex-col items-center gap-12">
     <div class="flex items-center gap-2">
-      <USelect v-model="color" :items="colors" placeholder="Color" />
-      <USelect v-model="variant" :items="variants" placeholder="Variant" />
-      <USelect v-model="orientation" :items="orientations" placeholder="Orientation" />
-      <USelect v-model="contentOrientation" :items="contentOrientations" placeholder="Content orientation" />
-      <USwitch v-model="collapsed" label="Collapsed" />
-      <USwitch v-model="highlight" label="Highlight" />
-      <USelect v-model="highlightColor" :items="colors" placeholder="Highlight color" />
-      <USwitch v-model="tooltip" label="Tooltip" />
-      <USwitch v-model="popover" label="Popover" />
-      <USwitch v-model="arrow" label="Arrow" />
+      <RLSelect v-model="color" :items="colors" placeholder="Color" />
+      <RLSelect v-model="variant" :items="variants" placeholder="Variant" />
+      <RLSelect v-model="orientation" :items="orientations" placeholder="Orientation" />
+      <RLSelect v-model="contentOrientation" :items="contentOrientations" placeholder="Content orientation" />
+      <RLSwitch v-model="collapsed" label="Collapsed" />
+      <RLSwitch v-model="highlight" label="Highlight" />
+      <RLSelect v-model="highlightColor" :items="colors" placeholder="Highlight color" />
+      <RLSwitch v-model="tooltip" label="Tooltip" />
+      <RLSwitch v-model="popover" label="Popover" />
+      <RLSwitch v-model="arrow" label="Arrow" />
     </div>
 
-    <UNavigationMenu
+    <RLNavigationMenu
       :arrow="arrow"
       :tooltip="tooltip"
       :popover="popover"

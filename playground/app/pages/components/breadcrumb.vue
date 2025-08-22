@@ -22,11 +22,11 @@ const items = [{
 </script>
 
 <template>
-  <UBreadcrumb :items="items">
+  <RLBreadcrumb :items="items">
     <template #dropdown="{ item }">
-      <UDropdownMenu :items="item.children">
-        <UButton :icon="item.icon" color="neutral" variant="link" class="p-0.5" />
-      </UDropdownMenu>
+      <RLDropdownMenu :items="item.children">
+        <RLButton :icon="item.icon" color="neutral" variant="link" class="p-0.5" />
+      </RLDropdownMenu>
     </template>
-  </UBreadcrumb>
+  </RLBreadcrumb>
 </template>

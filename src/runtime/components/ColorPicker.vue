@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/color-picker'
+import theme from '#build/rimelightWebFramework/color-picker'
 import type { HSLObject } from 'colortranslator'
 import type { ComponentConfig } from '../types/utils'
 
@@ -86,7 +86,7 @@ const modelValue = defineModel<string>(undefined)
 
 const appConfig = useAppConfig() as ColorPicker['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.colorPicker || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.colorPicker || {}) })({
   size: props.size
 }))
 

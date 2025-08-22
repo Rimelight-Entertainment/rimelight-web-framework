@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { SelectMenuItem, AvatarProps } from '@nuxt/ui'
+import type { SelectMenuItem, AvatarProps } from '@rimelight/rimelight-web-framework'
 
 import { upperFirst } from 'scule'
 import { refDebounced } from '@vueuse/core'
-import theme from '#build/ui/select-menu'
+import theme from '#build/rimelightWebFramework/select-menu'
 import type { User } from '~/types'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
@@ -52,10 +52,10 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-48">
-      <USelectMenu :items="items" placeholder="Search..." default-value="Apple" />
+      <RLSelectMenu :items="items" placeholder="Search..." default-value="Apple" />
     </div>
     <div class="flex items-center gap-2">
-      <USelectMenu
+      <RLSelectMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -65,7 +65,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-2">
-      <USelectMenu
+      <RLSelectMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -76,7 +76,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-2">
-      <USelectMenu
+      <RLSelectMenu
         v-for="variant in variants"
         :key="variant"
         :items="items"
@@ -88,13 +88,13 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex flex-col gap-4 w-48">
-      <USelectMenu :items="items" placeholder="Disabled" disabled />
-      <USelectMenu :items="items" placeholder="Required" required />
-      <USelectMenu v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
-      <USelectMenu :items="items" loading placeholder="Search..." />
+      <RLSelectMenu :items="items" placeholder="Disabled" disabled />
+      <RLSelectMenu :items="items" placeholder="Required" required />
+      <RLSelectMenu v-model="selectedItems" :items="items" placeholder="Multiple" multiple />
+      <RLSelectMenu :items="items" loading placeholder="Search..." />
     </div>
     <div class="flex items-center gap-4">
-      <USelectMenu
+      <RLSelectMenu
         v-for="size in sizes"
         :key="size"
         :items="items"
@@ -104,7 +104,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
       />
     </div>
     <div class="flex items-center gap-4">
-      <USelectMenu
+      <RLSelectMenu
         v-for="size in sizes"
         :key="size"
         :items="statuses"
@@ -117,10 +117,10 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         <template #leading="{ modelValue, ui }">
           <UIcon v-if="modelValue" :name="modelValue.icon" :class="ui.leadingIcon()" />
         </template>
-      </USelectMenu>
+      </RLSelectMenu>
     </div>
     <div class="flex items-center gap-4">
-      <USelectMenu
+      <RLSelectMenu
         v-for="size in sizes"
         :key="size"
         v-model:search-term="searchTerm"
@@ -134,9 +134,9 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         @update:open="searchTerm = ''"
       >
         <template #leading="{ modelValue, ui }">
-          <UAvatar v-if="modelValue?.avatar" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="modelValue.avatar" />
+          <RLAvatar v-if="modelValue?.avatar" :size="(ui.itemLeadingAvatarSize() as AvatarProps['size'])" v-bind="modelValue.avatar" />
         </template>
-      </USelectMenu>
+      </RLSelectMenu>
     </div>
   </div>
 </template>

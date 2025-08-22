@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/dropdown-menu'
+import theme from '#build/rimelightWebFramework/dropdown-menu'
 
 const loading = ref(false)
 
@@ -138,19 +138,19 @@ defineShortcuts(extractShortcuts(items.value))
 <template>
   <div class="flex-1">
     <div class="flex flex-col items-center gap-8">
-      <USelectMenu v-model="size" :items="sizes" placeholder="Size" />
+      <RLSelectMenu v-model="size" :items="sizes" placeholder="Size" />
 
-      <UDropdownMenu :items="items" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" :ui="{ content: 'w-48' }">
-        <UButton label="Open" color="neutral" variant="outline" icon="i-lucide-menu" />
+      <RLDropdownMenu :items="items" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" :ui="{ content: 'w-48' }">
+        <RLButton label="Open" color="neutral" variant="outline" icon="i-lucide-menu" />
 
         <template #custom-trailing>
           <UIcon name="i-lucide-badge-check" class="shrink-0 size-5 text-primary" />
         </template>
-      </UDropdownMenu>
+      </RLDropdownMenu>
 
-      <UDropdownMenu :items="itemsWithColor" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" :ui="{ content: 'w-48' }">
-        <UButton label="Color" color="neutral" variant="outline" icon="i-lucide-menu" />
-      </UDropdownMenu>
+      <RLDropdownMenu :items="itemsWithColor" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" :ui="{ content: 'w-48' }">
+        <RLButton label="Color" color="neutral" variant="outline" icon="i-lucide-menu" />
+      </RLDropdownMenu>
     </div>
   </div>
 </template>

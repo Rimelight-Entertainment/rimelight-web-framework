@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/textarea'
+import theme from '#build/rimelightWebFramework/textarea'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
@@ -97,7 +97,7 @@ const appConfig = useAppConfig() as Textarea['AppConfig']
 const { emitFormFocus, emitFormBlur, emitFormInput, emitFormChange, size, color, id, name, highlight, disabled, ariaAttrs } = useFormField<TextareaProps<T>>(props, { deferInputValidation: true })
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.textarea || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.textarea || {}) })({
   color: color.value,
   variant: props.variant,
   size: size?.value,

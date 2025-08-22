@@ -2,7 +2,7 @@
 import type { CalendarRootProps, CalendarRootEmits, RangeCalendarRootProps, RangeCalendarRootEmits, DateRange, CalendarCellTriggerProps } from 'reka-ui'
 import type { DateValue } from '@internationalized/date'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/calendar'
+import theme from '#build/rimelightWebFramework/calendar'
 import type { ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -30,7 +30,7 @@ export interface CalendarProps<R extends boolean = false, M extends boolean = fa
   as?: any
   /**
    * The icon to use for the next year control.
-   * @defaultValue appConfig.ui.icons.chevronDoubleRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDoubleRight
    * @IconifyIcon
    */
   nextYearIcon?: string
@@ -41,7 +41,7 @@ export interface CalendarProps<R extends boolean = false, M extends boolean = fa
   nextYear?: ButtonProps
   /**
    * The icon to use for the next month control.
-   * @defaultValue appConfig.ui.icons.chevronRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronRight
    * @IconifyIcon
    */
   nextMonthIcon?: string
@@ -52,7 +52,7 @@ export interface CalendarProps<R extends boolean = false, M extends boolean = fa
   nextMonth?: ButtonProps
   /**
    * The icon to use for the previous year control.
-   * @defaultValue appConfig.ui.icons.chevronDoubleLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDoubleLeft
    * @IconifyIcon
    */
   prevYearIcon?: string
@@ -63,7 +63,7 @@ export interface CalendarProps<R extends boolean = false, M extends boolean = fa
   prevYear?: ButtonProps
   /**
    * The icon to use for the previous month control.
-   * @defaultValue appConfig.ui.icons.chevronLeft
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronLeft
    * @IconifyIcon
    */
   prevMonthIcon?: string
@@ -128,12 +128,12 @@ const appConfig = useAppConfig() as Calendar['AppConfig']
 
 const rootProps = useForwardPropsEmits(reactiveOmit(props, 'range', 'modelValue', 'defaultValue', 'color', 'size', 'monthControls', 'yearControls', 'class', 'ui'), emits)
 
-const nextYearIcon = computed(() => props.nextYearIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronDoubleLeft : appConfig.ui.icons.chevronDoubleRight))
-const nextMonthIcon = computed(() => props.nextMonthIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronLeft : appConfig.ui.icons.chevronRight))
-const prevYearIcon = computed(() => props.prevYearIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronDoubleRight : appConfig.ui.icons.chevronDoubleLeft))
-const prevMonthIcon = computed(() => props.prevMonthIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronRight : appConfig.ui.icons.chevronLeft))
+const nextYearIcon = computed(() => props.nextYearIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronDoubleLeft : appConfig.rimelightWebFramework.icons.chevronDoubleRight))
+const nextMonthIcon = computed(() => props.nextMonthIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronLeft : appConfig.rimelightWebFramework.icons.chevronRight))
+const prevYearIcon = computed(() => props.prevYearIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronDoubleRight : appConfig.rimelightWebFramework.icons.chevronDoubleLeft))
+const prevMonthIcon = computed(() => props.prevMonthIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronRight : appConfig.rimelightWebFramework.icons.chevronLeft))
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.calendar || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.calendar || {}) })({
   color: props.color,
   size: props.size
 }))

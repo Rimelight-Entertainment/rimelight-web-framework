@@ -2,7 +2,7 @@
 import type { DrawerRootProps, DrawerRootEmits } from 'vaul-vue'
 import type { DialogContentProps, DialogContentEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/drawer'
+import theme from '#build/rimelightWebFramework/drawer'
 import type { EmitsToProps, ComponentConfig } from '../types/utils'
 
 type Drawer = ComponentConfig<typeof theme, AppConfig, 'drawer'>
@@ -88,7 +88,7 @@ const contentEvents = {
   closeAutoFocus: (e: Event) => e.preventDefault()
 }
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.drawer || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.drawer || {}) })({
   direction: props.direction,
   inset: props.inset
 }))

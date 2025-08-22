@@ -2,7 +2,7 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { ComboboxRootProps, ComboboxRootEmits, ComboboxContentProps, ComboboxContentEmits, ComboboxArrowProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/input-menu'
+import theme from '#build/rimelightWebFramework/input-menu'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps, ChipProps, InputProps } from '../types'
 import type { AcceptableValue, ArrayOrNested, GetItemKeys, GetItemValue, GetModelValue, GetModelValueEmits, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
@@ -57,20 +57,20 @@ export interface InputMenuProps<T extends ArrayOrNested<InputMenuItem> = ArrayOr
   autofocusDelay?: number
   /**
    * The icon displayed to open the menu.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   selectedIcon?: string
   /**
    * The icon displayed to delete a tag.
    * Works only when `multiple` is `true`.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   deleteIcon?: string
@@ -215,13 +215,13 @@ const arrowProps = toRef(() => props.arrow as ComboboxArrowProps)
 
 const { emitFormBlur, emitFormFocus, emitFormChange, emitFormInput, size: formGroupSize, color, id, name, highlight, disabled, ariaAttrs } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.ui.icons.chevronDown })))
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.rimelightWebFramework.icons.chevronDown })))
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
 const [DefineCreateItemTemplate, ReuseCreateItemTemplate] = createReusableTemplate()
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.inputMenu || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.inputMenu || {}) })({
   color: color.value,
   variant: props.variant,
   size: inputSize?.value,
@@ -448,7 +448,7 @@ defineExpose({
 
           <TagsInputItemDelete :class="ui.tagsItemDelete({ class: [props.ui?.tagsItemDelete, isInputItem(item) && item.ui?.tagsItemDelete] })" :disabled="disabled">
             <slot name="tags-item-delete" :item="(item as NestedItem<T>)" :index="index">
-              <UIcon :name="deleteIcon || appConfig.ui.icons.close" :class="ui.tagsItemDeleteIcon({ class: [props.ui?.tagsItemDeleteIcon, isInputItem(item) && item.ui?.tagsItemDeleteIcon] })" />
+              <UIcon :name="deleteIcon || appConfig.rimelightWebFramework.icons.close" :class="ui.tagsItemDeleteIcon({ class: [props.ui?.tagsItemDeleteIcon, isInputItem(item) && item.ui?.tagsItemDeleteIcon] })" />
             </slot>
           </TagsInputItemDelete>
         </TagsInputItem>
@@ -545,7 +545,7 @@ defineExpose({
                     <slot name="item-trailing" :item="(item as NestedItem<T>)" :index="index" />
 
                     <ComboboxItemIndicator as-child>
-                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isInputItem(item) && item.ui?.itemTrailingIcon] })" />
+                      <UIcon :name="selectedIcon || appConfig.rimelightWebFramework.icons.check" :class="ui.itemTrailingIcon({ class: [props.ui?.itemTrailingIcon, isInputItem(item) && item.ui?.itemTrailingIcon] })" />
                     </ComboboxItemIndicator>
                   </span>
                 </slot>

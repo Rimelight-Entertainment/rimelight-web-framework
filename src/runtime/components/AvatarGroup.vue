@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/avatar-group'
+import theme from '#build/rimelightWebFramework/avatar-group'
 import type { ComponentConfig } from '../types/utils'
 
 type AvatarGroup = ComponentConfig<typeof theme, AppConfig, 'avatarGroup'>
@@ -41,7 +41,7 @@ const slots = defineSlots<AvatarGroupSlots>()
 
 const appConfig = useAppConfig() as AvatarGroup['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.avatarGroup || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.avatarGroup || {}) })({
   size: props.size
 }))
 

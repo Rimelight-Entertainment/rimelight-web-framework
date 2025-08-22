@@ -27,19 +27,19 @@ Visit https://ui.nuxt.com to explore the documentation.
 ## Installation
 
 ```bash [pnpm]
-pnpm add @nuxt/ui
+pnpm add @rimelight/rimelight-web-framework
 ```
 
 ```bash [yarn]
-yarn add @nuxt/ui
+yarn add @rimelight/rimelight-web-framework
 ```
 
 ```bash [npm]
-npm install @nuxt/ui
+npm install @rimelight/rimelight-web-framework
 ```
 
 ```bash [bun]
-bun add @nuxt/ui
+bun add @rimelight/rimelight-web-framework
 ```
 
 ### Nuxt
@@ -48,7 +48,7 @@ bun add @nuxt/ui
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui']
+  modules: ['@rimelight/rimelight-web-framework']
 })
 ```
 
@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 
 ```css [assets/css/main.css]
 @import "tailwindcss";
-@import "@nuxt/ui";
+@import "@rimelight/rimelight-web-framework";
 ```
 
 Learn more in the [installation guide](https://ui.nuxt.com/getting-started/installation/nuxt).
@@ -68,7 +68,7 @@ Learn more in the [installation guide](https://ui.nuxt.com/getting-started/insta
 ```ts [vite.config.ts]
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import ui from '@nuxt/ui/vite'
+import ui from '@rimelight/rimelight-web-framework/vite'
 
 export default defineConfig({
   plugins: [
@@ -83,7 +83,7 @@ export default defineConfig({
 ```ts [main.ts]
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import ui from '@nuxt/ui/vue-plugin'
+import ui from '@rimelight/rimelight-web-framework/vue-plugin'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -103,7 +103,7 @@ app.mount('#app')
 
 ```css [assets/main.css]
 @import "tailwindcss";
-@import "@nuxt/ui";
+@import "@rimelight/rimelight-web-framework";
 ```
 
 Learn more in the [installation guide](https://ui.nuxt.com/getting-started/installation/vue).
@@ -134,11 +134,11 @@ Follow the docs to [set up your local development environment](https://ui.nuxt.c
 Licensed under the [MIT license](https://github.com/nuxt/ui/blob/v3/LICENSE.md).
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxt/ui/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/@nuxt/ui
+[npm-version-src]: https://img.shields.io/npm/v/@rimelight/rimelight-web-framework/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/@rimelight/rimelight-web-framework
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npm.chart.dev/@nuxt/ui
+[npm-downloads-src]: https://img.shields.io/npm/dm/@rimelight/rimelight-web-framework.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npm.chart.dev/@rimelight/rimelight-web-framework
 
 [license-src]: https://img.shields.io/github/license/nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://github.com/nuxt/ui/blob/v3/LICENSE.md

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PopoverRootProps, HoverCardRootProps, PopoverRootEmits, PopoverContentProps, PopoverContentEmits, PopoverArrowProps, HoverCardTriggerProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/popover'
+import theme from '#build/rimelightWebFramework/popover'
 import type { EmitsToProps, ComponentConfig } from '../types/utils'
 
 type Popover = ComponentConfig<typeof theme, AppConfig, 'popover'>
@@ -97,7 +97,7 @@ const contentEvents = computed(() => {
 const arrowProps = toRef(() => props.arrow as PopoverArrowProps)
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.popover || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.popover || {}) })({
   side: contentProps.value.side
 }))
 

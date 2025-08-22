@@ -5,7 +5,7 @@
     </h1>
 
     <div class="flex items-center justify-center gap-1">
-      <UKbd value="meta" /> <UKbd value="K" />
+      <RLKbd value="meta" /> <RLKbd value="K" />
     </div>
   </div>
 </template>

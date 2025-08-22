@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuContentEmits, DropdownMenuArrowProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/dropdown-menu'
+import theme from '#build/rimelightWebFramework/dropdown-menu'
 import type { AvatarProps, KbdProps, LinkProps } from '../types'
 import type { ArrayOrNested, DynamicSlots, MergeTypes, NestedItem, EmitsToProps, ComponentConfig } from '../types/utils'
 
@@ -45,20 +45,20 @@ export interface DropdownMenuProps<T extends ArrayOrNested<DropdownMenuItem> = A
   items?: T
   /**
    * The icon displayed when an item is checked.
-   * @defaultValue appConfig.ui.icons.check
+   * @defaultValue appConfig.rimelightWebFramework.icons.check
    * @IconifyIcon
    */
   checkedIcon?: string
   /**
    * The icon displayed when an item is loading.
-   * @defaultValue appConfig.ui.icons.loading
+   * @defaultValue appConfig.rimelightWebFramework.icons.loading
    * @IconifyIcon
    */
   loadingIcon?: string
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
-   * @defaultValue appConfig.ui.icons.external
+   * @defaultValue appConfig.rimelightWebFramework.icons.external
    * @IconifyIcon
    */
   externalIcon?: boolean | string
@@ -132,7 +132,7 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
 const proxySlots = omit(slots, ['default'])
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.dropdownMenu || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.dropdownMenu || {}) })({
   size: props.size
 }))
 </script>

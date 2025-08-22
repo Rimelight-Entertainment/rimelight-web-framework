@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/input'
+import theme from '#build/rimelightWebFramework/input'
 import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 import type { AvatarProps } from '../types'
 import type { AcceptableValue, ComponentConfig } from '../types/utils'
@@ -97,7 +97,7 @@ const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponen
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.input || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.input || {}) })({
   type: props.type as Input['variants']['type'],
   color: color.value,
   variant: props.variant,

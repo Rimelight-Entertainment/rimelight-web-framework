@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as z from 'zod'
-import type { FormSubmitEvent } from '@nuxt/ui'
-import theme from '#build/ui/file-upload'
+import type { FormSubmitEvent } from '@rimelight/rimelight-web-framework'
+import theme from '#build/rimelightWebFramework/file-upload'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
@@ -86,19 +86,19 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
 
 <template>
   <div class="flex flex-col items-center gap-8 w-96">
-    <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-      <UFormField name="avatar" label="Avatar" description="JPG, GIF or PNG. 1MB Max." :size="size">
-        <UFileUpload v-slot="{ open, removeFile }" v-model="state.avatar" accept="image/*">
+    <RLForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+      <RLFormField name="avatar" label="Avatar" description="JPG, GIF or PNG. 1MB Max." :size="size">
+        <RLFileUpload v-slot="{ open, removeFile }" v-model="state.avatar" accept="image/*">
           <div class="flex flex-wrap items-center gap-3">
-            <UAvatar size="lg" :src="state.avatar ? createObjectUrl(state.avatar) : undefined" icon="i-lucide-image" />
+            <RLAvatar size="lg" :src="state.avatar ? createObjectUrl(state.avatar) : undefined" icon="i-lucide-image" />
 
-            <UButton :label="state.avatar ? 'Change image' : 'Upload image'" color="neutral" @click="open()" />
+            <RLButton :label="state.avatar ? 'Change image' : 'Upload image'" color="neutral" @click="open()" />
           </div>
 
           <p v-if="state.avatar" class="text-xs text-muted mt-1.5">
             {{ state.avatar.name }}
 
-            <UButton
+            <RLButton
               label="Remove"
               color="error"
               variant="link"
@@ -107,24 +107,24 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
               @click="removeFile()"
             />
           </p>
-        </UFileUpload>
-      </UFormField>
+        </RLFileUpload>
+      </RLFormField>
 
-      <UButton label="Submit" type="submit" />
-    </UForm>
+      <RLButton label="Submit" type="submit" />
+    </RLForm>
 
-    <USeparator />
+    <RLSeparator />
 
     <div class="flex flex-wrap items-center gap-3">
-      <USelect v-model="size" :items="sizes" />
-      <USelect v-model="variant" :items="variants" />
-      <USelect v-model="layout" :items="layouts" />
-      <USelect v-model="position" :items="positions" />
+      <RLSelect v-model="size" :items="sizes" />
+      <RLSelect v-model="variant" :items="variants" />
+      <RLSelect v-model="layout" :items="layouts" />
+      <RLSelect v-model="position" :items="positions" />
     </div>
 
-    <USeparator />
+    <RLSeparator />
 
-    <UFileUpload
+    <RLFileUpload
       v-model="value"
       :size="size"
       :variant="variant"
@@ -135,9 +135,9 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
       :class="variant === 'area' ? 'w-full min-h-44' : ''"
     />
 
-    <USeparator />
+    <RLSeparator />
 
-    <UFileUpload
+    <RLFileUpload
       v-model="valueMultiple"
       :size="size"
       :variant="variant"
@@ -151,7 +151,7 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
       class="w-full min-h-44"
     >
       <template #actions="{ open }">
-        <UButton
+        <RLButton
           label="Select images"
           icon="i-lucide-upload"
           color="neutral"
@@ -167,7 +167,7 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
             Files ({{ files?.length }})
           </p>
 
-          <UButton
+          <RLButton
             label="Add files"
             color="neutral"
             variant="outline"
@@ -179,7 +179,7 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
       </template>
 
       <template v-if="layout === 'list'" #files-bottom="{ removeFile, files }">
-        <UButton
+        <RLButton
           v-if="files?.length"
           label="Remove files"
           color="neutral"
@@ -189,6 +189,6 @@ async function onSubmit(event: FormSubmitEvent<schema>) {
           @click="removeFile(0)"
         />
       </template>
-    </UFileUpload>
+    </RLFileUpload>
   </div>
 </template>

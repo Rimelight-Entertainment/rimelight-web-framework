@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { DialogRootProps, DialogRootEmits, DialogContentProps, DialogContentEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/slideover'
+import theme from '#build/rimelightWebFramework/slideover'
 import type { ButtonProps } from '../types'
 import type { EmitsToProps, ComponentConfig } from '../types/utils'
 
@@ -40,7 +40,7 @@ export interface SlideoverProps extends DialogRootProps {
   close?: boolean | Partial<ButtonProps>
   /**
    * The icon displayed in the close button.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   closeIcon?: string
@@ -120,7 +120,7 @@ const contentEvents = computed(() => {
   return defaultEvents
 })
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.slideover || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.slideover || {}) })({
   transition: props.transition,
   side: props.side
 }))
@@ -181,7 +181,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.slideover ||
                 <slot name="close" :close="close" :ui="ui">
                   <UButton
                     v-if="props.close"
-                    :icon="closeIcon || appConfig.ui.icons.close"
+                    :icon="closeIcon || appConfig.rimelightWebFramework.icons.close"
                     color="neutral"
                     variant="ghost"
                     :aria-label="t('slideover.close')"

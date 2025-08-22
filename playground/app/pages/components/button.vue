@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import theme from '#build/ui/button'
+import theme from '#build/rimelightWebFramework/button'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 const variants = Object.keys(theme.variants.variant) as Array<keyof typeof theme.variants.variant>
@@ -13,44 +13,44 @@ function onClick() {
 <template>
   <div class="flex flex-col gap-2">
     <div class="flex items-center gap-2">
-      <UButton class="font-bold">
+      <RLButton class="font-bold">
         Button
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton to="/">
+      <RLButton to="/">
         Link
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton disabled>
+      <RLButton disabled>
         Disabled
-      </UButton>
+      </RLButton>
 
-      <UButton to="#" disabled>
+      <RLButton to="#" disabled>
         Disabled Link
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton loading>
+      <RLButton loading>
         Loading
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton loading-auto @click="onClick">
+      <RLButton loading-auto @click="onClick">
         Loading auto
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton loading trailing>
+      <RLButton loading trailing>
         Loading
-      </UButton>
+      </RLButton>
     </div>
     <div class="flex items-center gap-2">
-      <UButton v-for="variant in variants" :key="variant" icon="i-lucide-rocket" :label="upperFirst(variant)" :variant="variant" />
+      <RLButton v-for="variant in variants" :key="variant" icon="i-lucide-rocket" :label="upperFirst(variant)" :variant="variant" />
     </div>
     <div class="flex items-center gap-2">
-      <UButton
+      <RLButton
         v-for="variant in variants"
         :key="variant"
         icon="i-lucide-rocket"
@@ -60,7 +60,7 @@ function onClick() {
       />
     </div>
     <div class="flex items-center gap-2">
-      <UButton
+      <RLButton
         v-for="variant in variants"
         :key="variant"
         :avatar="{ src: 'https://github.com/benjamincanac.png' }"
@@ -70,16 +70,16 @@ function onClick() {
       />
     </div>
     <div class="flex items-center gap-2 ms-[-129px]">
-      <UButton v-for="size in sizes" :key="size" label="Button" :size="size" />
+      <RLButton v-for="size in sizes" :key="size" label="Button" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-171px]">
-      <UButton v-for="size in sizes" :key="size" icon="i-lucide-rocket" label="Button" :size="size" />
+      <RLButton v-for="size in sizes" :key="size" icon="i-lucide-rocket" label="Button" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-171px]">
-      <UButton v-for="size in sizes" :key="size" :avatar="{ src: 'https://github.com/benjamincanac.png' }" label="Button" :size="size" />
+      <RLButton v-for="size in sizes" :key="size" :avatar="{ src: 'https://github.com/benjamincanac.png' }" label="Button" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-159px]">
-      <UButton
+      <RLButton
         v-for="size in sizes"
         :key="size"
         icon="i-lucide-rocket"
@@ -89,7 +89,7 @@ function onClick() {
       />
     </div>
     <div class="flex items-center gap-2 ms-[-159px]">
-      <UButton
+      <RLButton
         v-for="size in sizes"
         :key="size"
         :avatar="{ src: 'https://github.com/benjamincanac.png' }"
@@ -99,10 +99,10 @@ function onClick() {
       />
     </div>
     <div class="flex items-center gap-2 ms-[-68px]">
-      <UButton v-for="size in sizes" :key="size" icon="i-lucide-rocket" :size="size" />
+      <RLButton v-for="size in sizes" :key="size" icon="i-lucide-rocket" :size="size" />
     </div>
     <div class="flex items-center gap-2 ms-[-68px]">
-      <UButton
+      <RLButton
         v-for="size in sizes"
         :key="size"
         :avatar="{ src: 'https://github.com/benjamincanac.png' }"
@@ -112,10 +112,10 @@ function onClick() {
       />
     </div>
     <div class="flex items-center gap-2">
-      <UButton icon="i-lucide-rocket" trailing-icon="i-lucide-chevron-down" label="Block" block />
+      <RLButton icon="i-lucide-rocket" trailing-icon="i-lucide-chevron-down" label="Block" block />
     </div>
     <div class="flex items-center gap-2">
-      <UButton icon="i-lucide-cloud-download" label="Button" class="group" :ui="{ leadingIcon: 'group-hover:animate-pulse' }" />
+      <RLButton icon="i-lucide-cloud-download" label="Button" class="group" :ui="{ leadingIcon: 'group-hover:animate-pulse' }" />
     </div>
   </div>
 </template>

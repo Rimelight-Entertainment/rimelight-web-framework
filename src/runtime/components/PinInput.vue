@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { PinInputRootEmits, PinInputRootProps } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/pin-input'
+import theme from '#build/rimelightWebFramework/pin-input'
 import type { ComponentConfig } from '../types/utils'
 
 type PinInput = ComponentConfig<typeof theme, AppConfig, 'pinInput'>
@@ -70,7 +70,7 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'disabled', 'id', 'ma
 
 const { emitFormInput, emitFormFocus, emitFormChange, emitFormBlur, size, color, id, name, highlight, disabled, ariaAttrs } = useFormField<PinInputProps>(props)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.pinInput || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.pinInput || {}) })({
   color: color.value,
   variant: props.variant,
   size: size.value,

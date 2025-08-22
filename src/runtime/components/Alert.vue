@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/alert'
+import theme from '#build/rimelightWebFramework/alert'
 import type { AvatarProps, ButtonProps } from '../types'
 import type { ComponentConfig } from '../types/utils'
 
@@ -48,7 +48,7 @@ export interface AlertProps {
   close?: boolean | Partial<ButtonProps>
   /**
    * The icon displayed in the close button.
-   * @defaultValue appConfig.ui.icons.close
+   * @defaultValue appConfig.rimelightWebFramework.icons.close
    * @IconifyIcon
    */
   closeIcon?: string
@@ -88,7 +88,7 @@ const slots = defineSlots<AlertSlots>()
 const { t } = useLocale()
 const appConfig = useAppConfig() as Alert['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.alert || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.alert || {}) })({
   color: props.color,
   variant: props.variant,
   orientation: props.orientation,
@@ -132,7 +132,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.alert || {})
       <slot name="close" :ui="ui">
         <UButton
           v-if="close"
-          :icon="closeIcon || appConfig.ui.icons.close"
+          :icon="closeIcon || appConfig.rimelightWebFramework.icons.close"
           color="neutral"
           variant="link"
           :aria-label="t('alert.close')"

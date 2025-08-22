@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { AccordionRootProps, AccordionRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/accordion'
+import theme from '#build/rimelightWebFramework/accordion'
 import type { DynamicSlots, ComponentConfig } from '../types/utils'
 
 type Accordion = ComponentConfig<typeof theme, AppConfig, 'accordion'>
@@ -36,7 +36,7 @@ export interface AccordionProps<T extends AccordionItem = AccordionItem> extends
   items?: T[]
   /**
    * The icon displayed on the right side of the trigger.
-   * @defaultValue appConfig.ui.icons.chevronDown
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronDown
    * @IconifyIcon
    */
   trailingIcon?: string
@@ -85,7 +85,7 @@ const appConfig = useAppConfig() as Accordion['AppConfig']
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'collapsible', 'defaultValue', 'disabled', 'modelValue', 'type', 'unmountOnHide'), emits)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.accordion || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.accordion || {}) })({
   disabled: props.disabled
 }))
 </script>
@@ -103,7 +103,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.accordion ||
       <AccordionHeader as="div" :class="ui.header({ class: [props.ui?.header, item.ui?.header] })">
         <AccordionTrigger :class="ui.trigger({ class: [props.ui?.trigger, item.ui?.trigger], disabled: item.disabled })">
           <slot name="leading" :item="item" :index="index" :open="open">
-            <UIcon v-if="item.icon" :name="item.icon" :class="ui.leadingIcon({ class: [props.ui?.leadingIcon, item?.ui?.leadingIcon] })" />
+            <UIcon v-if="item.icon || leadingIcon" :name="item.icon || leadingIcon" :class="ui.leadingIcon({ class: [props.ui?.leadingIcon, item?.ui?.leadingIcon] })" />
           </slot>
 
           <span v-if="get(item, props.labelKey as string) || !!slots.default" :class="ui.label({ class: [props.ui?.label, item.ui?.label] })">
@@ -111,7 +111,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.accordion ||
           </span>
 
           <slot name="trailing" :item="item" :index="index" :open="open">
-            <UIcon :name="item.trailingIcon || trailingIcon || appConfig.ui.icons.chevronDown" :class="ui.trailingIcon({ class: [props.ui?.trailingIcon, item.ui?.trailingIcon] })" />
+            <UIcon v-if="item.trailingIcon || trailingIcon" :name="item.trailingIcon || trailingIcon" :class="ui.trailingIcon({ class: [props.ui?.trailingIcon, item.ui?.trailingIcon] })" />
           </slot>
         </AccordionTrigger>
       </AccordionHeader>

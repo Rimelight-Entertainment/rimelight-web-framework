@@ -31,7 +31,7 @@ const component = ({ name, primitive, pro, prose, content }) => {
       ? `
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-${pro ? `import type { ComponentConfig } from '@nuxt/ui'` : ''}
+${pro ? `import type { ComponentConfig } from '@rimelight/rimelight-web-framework'` : ''}
 import theme from '#build/${path}/${prose ? 'prose/' : ''}${content ? 'content/' : ''}${kebabName}'
 ${!pro ? `import type { ComponentConfig } from '../types/utils'` : ''}
 
@@ -76,7 +76,7 @@ const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.${pro ? 'uiPro' 
 <script lang="ts">
 import type { ${upperName}RootProps, ${upperName}RootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-${pro ? `import type { ComponentConfig } from '@nuxt/ui'` : ''}
+${pro ? `import type { ComponentConfig } from '@rimelight/rimelight-web-framework'` : ''}
 import theme from '#build/${path}/${prose ? 'prose/' : ''}${content ? 'content/' : ''}${kebabName}'
 ${!pro ? `import type { ComponentConfig } from '../types/utils'` : ''}
 

@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { StepperRootProps, StepperRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/stepper'
+import theme from '#build/rimelightWebFramework/stepper'
 import type { DynamicSlots, ComponentConfig } from '../types/utils'
 
 type Stepper = ComponentConfig<typeof theme, AppConfig, 'stepper'>
@@ -89,7 +89,7 @@ const appConfig = useAppConfig() as Stepper['AppConfig']
 
 const rootProps = useForwardProps(reactivePick(props, 'as', 'orientation', 'linear'))
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.stepper || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.stepper || {}) })({
   orientation: props.orientation,
   size: props.size,
   color: props.color

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import theme from '#build/ui/progress'
+import theme from '#build/rimelightWebFramework/progress'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 
@@ -32,27 +32,27 @@ onMounted(() => {
 <template>
   <div class="flex flex-col gap-8 items-center">
     <div class="flex flex-col gap-4 w-48">
-      <UProgress />
-      <UProgress color="neutral" />
-      <UProgress color="error" />
-      <UProgress animation="carousel-inverse" />
-      <UProgress animation="swing" />
-      <UProgress animation="elastic" />
-      <UProgress v-model="value2" :max="max" status />
-      <UProgress v-model="value2" :max="max" status inverted />
+      <RLProgress />
+      <RLProgress color="neutral" />
+      <RLProgress color="error" />
+      <RLProgress animation="carousel-inverse" />
+      <RLProgress animation="swing" />
+      <RLProgress animation="elastic" />
+      <RLProgress v-model="value2" :max="max" status />
+      <RLProgress v-model="value2" :max="max" status inverted />
     </div>
 
     <div class="flex items-center gap-4">
-      <UProgress v-for="size in sizes" :key="size" v-model="value1" :size="size" class="w-48" />
+      <RLProgress v-for="size in sizes" :key="size" v-model="value1" :size="size" class="w-48" />
     </div>
 
     <div class="h-48 flex items-center gap-8">
-      <UProgress orientation="vertical" />
-      <UProgress orientation="vertical" animation="carousel-inverse" />
-      <UProgress orientation="vertical" animation="swing" />
-      <UProgress orientation="vertical" animation="elastic" />
-      <UProgress v-model="value2" orientation="vertical" :max="max" status class="w-48 justify-start" />
-      <UProgress
+      <RLProgress orientation="vertical" />
+      <RLProgress orientation="vertical" animation="carousel-inverse" />
+      <RLProgress orientation="vertical" animation="swing" />
+      <RLProgress orientation="vertical" animation="elastic" />
+      <RLProgress v-model="value2" orientation="vertical" :max="max" status class="w-48 justify-start" />
+      <RLProgress
         v-model="value2"
         orientation="vertical"
         :max="max"
@@ -63,7 +63,7 @@ onMounted(() => {
     </div>
 
     <div class="h-48 flex items-center gap-8">
-      <UProgress v-for="size in sizes" :key="size" v-model="value1" orientation="vertical" :size="size" />
+      <RLProgress v-for="size in sizes" :key="size" v-model="value1" orientation="vertical" :size="size" />
     </div>
   </div>
 </template>

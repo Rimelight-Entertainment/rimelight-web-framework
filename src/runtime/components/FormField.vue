@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/form-field'
+import theme from '#build/rimelightWebFramework/form-field'
 import type { ComponentConfig } from '../types/utils'
 
 type FormField = ComponentConfig<typeof theme, AppConfig, 'formField'>
@@ -60,7 +60,7 @@ const slots = defineSlots<FormFieldSlots>()
 
 const appConfig = useAppConfig() as FormField['AppConfig']
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.formField || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.formField || {}) })({
   size: props.size,
   required: props.required
 }))

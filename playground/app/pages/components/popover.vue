@@ -16,93 +16,93 @@ function send() {
 <template>
   <div class="text-center">
     <div>
-      <UPopover arrow :content="{ side: 'top' }">
-        <UButton label="Click me top" color="neutral" variant="outline" />
+      <RLPopover arrow :content="{ side: 'top' }">
+        <RLButton label="Click me top" color="neutral" variant="outline" />
 
         <template #content>
           <div class="w-48 h-16" />
         </template>
-      </UPopover>
+      </RLPopover>
 
       <div class="flex items-center gap-2 my-2">
-        <UPopover arrow :content="{ side: 'left' }">
-          <UButton label="Click me left" color="neutral" variant="outline" />
+        <RLPopover arrow :content="{ side: 'left' }">
+          <RLButton label="Click me left" color="neutral" variant="outline" />
 
           <template #content>
             <div class="w-48 h-16" />
           </template>
-        </UPopover>
+        </RLPopover>
 
-        <UPopover arrow :content="{ side: 'right' }">
-          <UButton label="Click me right" color="neutral" variant="outline" />
+        <RLPopover arrow :content="{ side: 'right' }">
+          <RLButton label="Click me right" color="neutral" variant="outline" />
 
           <template #content>
             <div class="w-48 h-16" />
           </template>
-        </UPopover>
+        </RLPopover>
       </div>
 
-      <UPopover v-model:open="open" arrow>
-        <UButton label="Click me bottom" color="neutral" variant="outline" />
+      <RLPopover v-model:open="open" arrow>
+        <RLButton label="Click me bottom" color="neutral" variant="outline" />
 
         <template #content>
           <div class="flex justify-center gap-2 p-4 w-48">
-            <UButton label="Close" color="neutral" @click="open = false" />
-            <UButton label="Send" color="neutral" trailing-icon="i-lucide-send-horizontal" :loading="loading" @click="send" />
+            <RLButton label="Close" color="neutral" @click="open = false" />
+            <RLButton label="Send" color="neutral" trailing-icon="i-lucide-send-horizontal" :loading="loading" @click="send" />
           </div>
         </template>
-      </UPopover>
+      </RLPopover>
 
       <div class="mt-8 relative">
-        <UPopover
+        <RLPopover
           v-model:open="openCustomAnchor"
           :dismissible="false"
         >
           <template #anchor>
-            <UInput placeholder="Search" class="w-56" @focus="openCustomAnchor = true" />
+            <RLInput placeholder="Search" class="w-56" @focus="openCustomAnchor = true" />
           </template>
 
           <template #content>
-            <Placeholder class="size-48 m-4 inline-flex" />
+            <RLPlaceholder class="size-48 m-4 inline-flex" />
           </template>
-        </UPopover>
+        </RLPopover>
       </div>
     </div>
 
     <div class="mt-24">
-      <UPopover mode="hover" arrow :content="{ side: 'top' }">
-        <UButton label="Hover me top" color="neutral" variant="outline" />
+      <RLPopover mode="hover" arrow :content="{ side: 'top' }">
+        <RLButton label="Hover me top" color="neutral" variant="outline" />
 
         <template #content>
           <div class="w-48 h-16" />
         </template>
-      </UPopover>
+      </RLPopover>
 
       <div class="flex items-center gap-2 my-2">
-        <UPopover mode="hover" arrow :content="{ side: 'left' }">
-          <UButton label="Hover me left" color="neutral" variant="outline" />
+        <RLPopover mode="hover" arrow :content="{ side: 'left' }">
+          <RLButton label="Hover me left" color="neutral" variant="outline" />
 
           <template #content>
             <div class="w-48 h-16" />
           </template>
-        </UPopover>
+        </RLPopover>
 
-        <UPopover mode="hover" arrow :content="{ side: 'right' }">
-          <UButton label="Hover me right" color="neutral" variant="outline" />
+        <RLPopover mode="hover" arrow :content="{ side: 'right' }">
+          <RLButton label="Hover me right" color="neutral" variant="outline" />
 
           <template #content>
             <div class="w-48 h-16" />
           </template>
-        </UPopover>
+        </RLPopover>
       </div>
 
-      <UPopover mode="hover" arrow>
-        <UButton label="Hover me bottom" color="neutral" variant="outline" />
+      <RLPopover mode="hover" arrow>
+        <RLButton label="Hover me bottom" color="neutral" variant="outline" />
 
         <template #content>
           <div class="w-48 h-16" />
         </template>
-      </UPopover>
+      </RLPopover>
     </div>
   </div>
 </template>

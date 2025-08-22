@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/switch'
+import theme from '#build/rimelightWebFramework/switch'
 
 const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 
@@ -9,18 +9,18 @@ const checked = ref(true)
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 ms-[-114px]">
-      <USwitch v-model="checked" label="Primary" />
-      <USwitch color="neutral" label="Neutral" :default-value="true" />
-      <USwitch color="error" label="Error" :default-value="true" />
-      <USwitch label="Default value" :default-value="true" />
-      <USwitch label="Required" required />
-      <USwitch label="Disabled" disabled />
+      <RLSwitch v-model="checked" label="Primary" />
+      <RLSwitch color="neutral" label="Neutral" :default-value="true" />
+      <RLSwitch color="error" label="Error" :default-value="true" />
+      <RLSwitch label="Default value" :default-value="true" />
+      <RLSwitch label="Required" required />
+      <RLSwitch label="Disabled" disabled />
     </div>
     <div class="flex items-center gap-4 ms-[-82px]">
-      <USwitch v-for="size in sizes" :key="size" :size="size" label="Switch me" />
+      <RLSwitch v-for="size in sizes" :key="size" :size="size" label="Switch me" />
     </div>
     <div class="flex items-center gap-4 ms-[-82px]">
-      <USwitch
+      <RLSwitch
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -30,7 +30,7 @@ const checked = ref(true)
       />
     </div>
     <div class="flex items-center gap-4 ms-[-82px]">
-      <USwitch
+      <RLSwitch
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -41,7 +41,7 @@ const checked = ref(true)
       />
     </div>
     <div class="flex items-center gap-4">
-      <USwitch
+      <RLSwitch
         v-for="size in sizes"
         :key="size"
         :size="size"
@@ -50,7 +50,7 @@ const checked = ref(true)
       />
     </div>
     <div class="flex items-center gap-4">
-      <USwitch
+      <RLSwitch
         v-for="size in sizes"
         :key="size"
         :size="size"

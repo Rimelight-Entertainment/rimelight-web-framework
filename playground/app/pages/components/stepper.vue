@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/stepper'
+import theme from '#build/rimelightWebFramework/stepper'
 
 const sizes = Object.keys(theme.variants.size)
 const colors = Object.keys(theme.variants.color)
@@ -38,12 +38,12 @@ const stepper = useTemplateRef('stepper')
 <template>
   <div class="flex flex-col gap-10">
     <div class="flex items-center justify-center gap-2 ">
-      <USelect v-model="color" :items="colors" placeholder="Color" />
-      <USelect v-model="orientation" :items="orientations" placeholder="Orientation" />
-      <USelect v-model="size" :items="sizes" placeholder="Size" />
+      <RLSelect v-model="color" :items="colors" placeholder="Color" />
+      <RLSelect v-model="orientation" :items="orientations" placeholder="Orientation" />
+      <RLSelect v-model="size" :items="sizes" placeholder="Size" />
     </div>
 
-    <UStepper
+    <RLStepper
       ref="stepper"
       :items="items"
       :color="color"
@@ -51,46 +51,46 @@ const stepper = useTemplateRef('stepper')
       :size="size"
     >
       <template #address="{ item }">
-        <Placeholder class="size-full min-h-60 min-w-60">
+        <RLPlaceholder class="size-full min-h-60 min-w-60">
           {{ item.title }}
-        </Placeholder>
+        </RLPlaceholder>
       </template>
 
       <template #shipping="{ item }">
-        <Placeholder class="size-full min-h-60 min-w-60">
+        <RLPlaceholder class="size-full min-h-60 min-w-60">
           {{ item.title }}
-        </Placeholder>
+        </RLPlaceholder>
       </template>
 
       <template #payment="{ item }">
-        <Placeholder class="size-full min-h-60 min-w-60">
+        <RLPlaceholder class="size-full min-h-60 min-w-60">
           {{ item.title }}
-        </Placeholder>
+        </RLPlaceholder>
       </template>
 
       <template #checkout="{ item }">
-        <Placeholder class="size-full min-h-60 min-w-60">
+        <RLPlaceholder class="size-full min-h-60 min-w-60">
           {{ item.title }}
-        </Placeholder>
+        </RLPlaceholder>
       </template>
-    </UStepper>
+    </RLStepper>
 
     <div class="flex gap-2 justify-between">
-      <UButton
+      <RLButton
         leading-icon="i-lucide-arrow-left"
         :disabled="!stepper?.hasPrev"
         @click="stepper?.prev()"
       >
         Prev
-      </UButton>
+      </RLButton>
 
-      <UButton
+      <RLButton
         trailing-icon="i-lucide-arrow-right"
         :disabled="!stepper?.hasNext"
         @click="stepper?.next()"
       >
         Next
-      </UButton>
+      </RLButton>
     </div>
   </div>
 </template>

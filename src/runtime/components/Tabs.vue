@@ -2,7 +2,7 @@
 <script lang="ts">
 import type { TabsRootProps, TabsRootEmits } from 'reka-ui'
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/tabs'
+import theme from '#build/rimelightWebFramework/tabs'
 import type { AvatarProps, BadgeProps } from '../types'
 import type { DynamicSlots, ComponentConfig } from '../types/utils'
 
@@ -109,7 +109,7 @@ const appConfig = useAppConfig() as Tabs['AppConfig']
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'orientation', 'activationMode', 'unmountOnHide'), emits)
 
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.tabs || {}) })({
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.tabs || {}) })({
   color: props.color,
   variant: props.variant,
   size: props.size,

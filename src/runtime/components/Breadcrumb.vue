@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/block-tag-newline -->
 <script lang="ts">
 import type { AppConfig } from '@nuxt/schema'
-import theme from '#build/ui/breadcrumb'
+import theme from '#build/rimelightWebFramework/breadcrumb'
 import type { AvatarProps, LinkProps } from '../types'
 import type { DynamicSlots, ComponentConfig } from '../types/utils'
 
@@ -29,7 +29,7 @@ export interface BreadcrumbProps<T extends BreadcrumbItem = BreadcrumbItem> {
   items?: T[]
   /**
    * The icon to use as a separator.
-   * @defaultValue appConfig.ui.icons.chevronRight
+   * @defaultValue appConfig.rimelightWebFramework.icons.chevronRight
    * @IconifyIcon
    */
   separatorIcon?: string
@@ -76,10 +76,10 @@ const slots = defineSlots<BreadcrumbSlots<T>>()
 const { dir } = useLocale()
 const appConfig = useAppConfig() as Breadcrumb['AppConfig']
 
-const separatorIcon = computed(() => props.separatorIcon || (dir.value === 'rtl' ? appConfig.ui.icons.chevronLeft : appConfig.ui.icons.chevronRight))
+const separatorIcon = computed(() => props.separatorIcon || (dir.value === 'rtl' ? appConfig.rimelightWebFramework.icons.chevronLeft : appConfig.rimelightWebFramework.icons.chevronRight))
 
 // eslint-disable-next-line vue/no-dupe-keys
-const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.ui?.breadcrumb || {}) })())
+const ui = computed(() => tv({ extend: tv(theme), ...(appConfig.rimelightWebFramework?.breadcrumb || {}) })())
 </script>
 
 <template>
