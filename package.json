@@ -35,11 +35,11 @@
     "./composables/*": "./dist/runtime/composables/*",
     "./utils": {
       "types": "./dist/runtime/utils/index.d.ts",
-      "import": "./dist/runtime/utils/index.ts"
+      "import": "./dist/runtime/utils/index.js"
     },
     "./utils/*": {
       "types": "./dist/runtime/utils/*.d.ts",
-      "import": "./dist/runtime/utils/*.ts"
+      "import": "./dist/runtime/utils/*.js"
     },
     "./locale": {
       "types": "./dist/runtime/locale/index.d.ts",
